@@ -1,0 +1,170 @@
+{
+  "model_parameters": {
+    "version": "0.2",
+    "units": {
+      "angle": "radians",
+      "length": "meters",
+      "mass": "kilograms",
+      "time": "seconds"
+    },
+    "gravity": [
+      0.0,
+      0.0,
+      9.81
+    ],
+    "include_dir": [
+      "models/vehicle/",
+      "vehicle/"
+    ],
+    "simulation": {
+      "integration_type": "ode113b",
+      "time_span": 0.2,
+      "time_step": 0.01,
+      "relative_error": 1e-6,
+      "absolute_error": 1e-6,
+      "omega_n": 50,
+      "out_file": "tire_fiala.dat"
+    }
+  },
+  "fixed": {
+    "frames": [
+      {
+        "name": "overhead_1",
+        "T": [6.0, -6.0, -6.0],
+        "R": [[1.0, 0.0, 0.0],
+              [0.0, 1.0, 0.0],
+              [0.0, 0.0, 1.0]]
+      },
+      {
+        "name": "overhead_2",
+        "T": [-6.0, -6.0, -6.0],
+        "R": [[1.0, 0.0, 0.0],
+              [0.0, 1.0, 0.0],
+              [0.0, 0.0, 1.0]]
+      }
+    ],
+    "lights": [
+      {
+        "name": "overhead_1",
+        "type": "point",
+        "parent": ["fixed", "overhead_1"],
+        "Ka": [0.4, 0.4, 0.4],
+        "Kd": [0.6, 0.6, 0.6],
+        "Ks": [0.2, 0.2, 0.2]
+      },
+      {
+        "name": "overhead_2",
+        "type": "point",
+        "parent": ["fixed", "overhead_2"],
+        "Ka": [0.6, 0.6, 0.6],
+        "Kd": [0.6, 0.6, 0.6],
+        "Ks": [0.2, 0.2, 0.2]
+      }
+    ]
+  },
+  "assemblies": [
+    {
+      "name": "tire",
+      "active": true,
+      "force_modules": [
+        {
+          "type": "tire",
+          "name": "tire",
+          "tire_type": "fiala",
+          "wheel_body": "tire"
+        }
+      ],
+      "bodies": [
+        {
+          "name": "1"
+        },
+        {
+          "name": "2",
+          "comment": "2 degrees yaw",
+          "frames": [
+            {
+              "name": "2+",
+              "R": [
+                [0.99939, -0.03490, 0],
+                [0.03490, 0.99939, 0],
+                [0, 0, 1]
+              ]
+            }
+          ]
+        },
+
+        {
+          "name": "tire",
+          "definition": [
+            "left_wheel.obj",
+            "left_wheel.mtl"
+          ],
+          "center_of_mass": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "mass": 20.1,
+          "moment_of_inertia": {
+            "Izx": 0.0,
+            "Ixx": 0.578,
+            "Ixy": 0.0,
+            "Izz": 0.578,
+            "Iyy": 0.931,
+            "Iyz": 0.0
+          }
+        }
+      ],
+      "joints": [
+        {
+          "name": "A",
+          "body_frame_pairs": [
+            [
+              "fixed",
+              "origin"
+            ],
+            [
+              "1",
+              "origin"
+            ]
+          ],
+          "type": "Tx",
+          "initial_displacement": 0.0,
+          "initial_velocity": 1.0
+        },
+        {
+          "name": "B",
+          "body_frame_pairs": [
+            [
+              "1",
+              "origin"
+            ],
+            [
+              "2",
+              "origin"
+            ]
+          ],
+          "type": "Tz",
+          "initial_displacement": -0.344,
+          "initial_velocity": 0.0
+        },
+        {
+          "name": "C",
+          "body_frame_pairs": [
+            [
+              "2",
+              "2+"
+            ],
+            [
+              "tire",
+              "origin"
+            ]
+          ],
+          "type": "Ry",
+          "initial_displacement": 0.0,
+          "initial_velocity": -0.344
+        }
+      ]
+    }
+  ]
+}

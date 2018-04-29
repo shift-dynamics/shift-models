@@ -1,0 +1,448 @@
+{
+  "model_parameters": {
+    "version": "0.2",
+    "units": {
+      "angle": "radians",
+      "length": "meters",
+      "mass": "kilograms",
+      "time": "seconds"
+    },
+    "gravity": [
+      0.0,
+      0.0,
+      9.81
+    ],
+    "include_dir": null,
+    "simulation": {
+      "integration_type": "ode113b",
+      "time_span": 20,
+      "time_step": 0.01,
+      "relative_error": 1e-9,
+      "absolute_error": 1e-9,
+      "omega_n": 100
+    }
+  },
+  "fixed": {
+    "frames": [
+      {
+        "name": "overhead_1",
+        "T": [0.0, 0.0, -24.0],
+        "R": [[1.0, 0.0, 0.0],
+              [0.0, -1.0, 0.0],
+              [0.0, 0.0, -1.0]]
+      },
+      {
+        "name": "overhead_2",
+        "T": [36.0, 36.0, -12.0],
+        "R": [[1.0, 0.0, 0.0],
+              [0.0, -1.0, 0.0],
+              [0.0, 0.0, -1.0]]
+      }
+    ],
+    "lights": [
+      {
+        "name": "overhead_1",
+        "type": "point",
+        "parent": ["fixed", "overhead_1"],
+        "Ka": [0.1, 0.1, 0.1],
+        "Kd": [0.8, 0.8, 0.8],
+        "Ks": [1.0, 1.0, 1.0]
+      },
+      {
+        "name": "overhead_2",
+        "type": "point",
+        "parent": ["fixed", "overhead_2"],
+        "Ka": [0.1, 0.1, 0.1],
+        "Kd": [0.8, 0.8, 0.8],
+        "Ks": [1.0, 1.0, 1.0]
+      }
+    ]
+  },
+  "assemblies": [
+    {
+      "name": "Kuka LBR IIWA 14-R820",
+      "active": true,
+      "bodies": [
+        {
+          "name": "1",
+          "definition": [
+            "lbr_iiwa_14_r820_part_1.obj",
+            "lbr_iiwa_14_r820_part_1.mtl"
+          ],
+          "frames": [
+            {
+              "name": "1_distal",
+              "T": [
+                0,
+                0.0,
+                -0.1575
+              ]
+            }
+          ],
+          "center_of_mass": [
+            0.0,
+            0.0,
+            -0.07875
+          ],
+          "mass": 1.0,
+          "moment_of_inertia": {
+            "Izx": 0.0,
+            "Ixx": 1.0,
+            "Ixy": 0.0,
+            "Izz": 1.0,
+            "Iyy": 1.0,
+            "Iyz": 0.0
+          }
+        },
+        {
+          "name": "2",
+          "definition": [
+            "lbr_iiwa_14_r820_part_2.obj",
+            "lbr_iiwa_14_r820_part_2.mtl"
+          ],
+          "frames": [
+            {
+              "name": "2_distal",
+              "T": [
+                0.0,
+                0.0,
+                -0.2025
+              ]
+            }
+          ],
+          "center_of_mass": [
+            0.0,
+            -0.10125,
+            0.0
+          ],
+          "mass": 1.0,
+          "moment_of_inertia": {
+            "Izx": 0.0,
+            "Ixx": 1.0,
+            "Ixy": 0.0,
+            "Izz": 1.0,
+            "Iyy": 1.0,
+            "Iyz": 0.0
+          }
+        },
+        {
+          "name": "3",
+          "definition": [
+            "lbr_iiwa_14_r820_part_3.obj",
+            "lbr_iiwa_14_r820_part_3.mtl"
+          ],
+          "frames": [
+            {
+              "name": "3_distal",
+              "T": [
+                0,
+                0,
+                -0.2045
+              ]
+            }
+          ],
+          "center_of_mass": [
+            0.0,
+            -0.1225,
+            0.0
+          ],
+          "mass": 1.0,
+          "moment_of_inertia": {
+            "Izx": 0.0,
+            "Ixx": 1.0,
+            "Ixy": 0.0,
+            "Izz": 1.0,
+            "Iyy": 1.0,
+            "Iyz": 0.0
+          }
+        },
+        {
+          "name": "4",
+          "definition": [
+            "lbr_iiwa_14_r820_part_4.obj",
+            "lbr_iiwa_14_r820_part_4.mtl"
+          ],
+          "frames": [
+            {
+              "name": "4_distal",
+              "T": [
+                0.0,
+                0.0,
+                -0.21550058
+              ]
+            }
+          ],
+          "center_of_mass": [
+            0.0,
+            0.0,
+            -0.10775
+          ],
+          "mass": 1.0,
+          "moment_of_inertia": {
+            "Izx": 0.0,
+            "Ixx": 1.0,
+            "Ixy": 0.0,
+            "Izz": 1.0,
+            "Iyy": 1.0,
+            "Iyz": 0.0
+          }
+        },
+        {
+          "name": "5",
+          "definition": [
+            "lbr_iiwa_14_r820_part_5.obj",
+            "lbr_iiwa_14_r820_part_5.mtl"
+          ],
+          "frames": [
+            {
+              "name": "5_distal",
+              "T": [
+                0.0,
+                0.0,
+                -0.18450068
+              ]
+            }
+          ],
+          "center_of_mass": [
+            0.0,
+            0.0,
+            -0.09225
+          ],
+          "mass": 1.0,
+          "moment_of_inertia": {
+            "Izx": 0.0,
+            "Ixx": 1.0,
+            "Ixy": 0.0,
+            "Izz": 1.0,
+            "Iyy": 1.0,
+            "Iyz": 0.0
+          }
+        },
+        {
+          "name": "6",
+          "definition": [
+            "lbr_iiwa_14_r820_part_6.obj",
+            "lbr_iiwa_14_r820_part_6.mtl"
+          ],
+          "frames": [
+            {
+              "name": "6_distal",
+              "T": [
+                0,
+                0.0607,
+                -0.2155
+              ]
+            }
+          ],
+          "center_of_mass": [
+            0.0,
+            0.0,
+            -0.10775
+          ],
+          "mass": 1.0,
+          "moment_of_inertia": {
+            "Izx": 0.0,
+            "Ixx": 1.0,
+            "Ixy": 0.0,
+            "Izz": 1.0,
+            "Iyy": 1.0,
+            "Iyz": 0.0
+          }
+        },
+        {
+          "name": "7",
+          "definition": [
+            "lbr_iiwa_14_r820_part_7.obj",
+            "lbr_iiwa_14_r820_part_7.mtl"
+          ],
+          "frames": [
+            {
+              "name": "7_distal",
+              "T": [
+                0,
+                -0.0607,
+                -0.0809
+              ]
+            }
+          ],
+          "center_of_mass": [
+            0.0,
+            -0.0607,
+            -0.04045
+          ],
+          "mass": 1.0,
+          "moment_of_inertia": {
+            "Izx": 0.0,
+            "Ixx": 1.0,
+            "Ixy": 0.0,
+            "Izz": 1.0,
+            "Iyy": 1.0,
+            "Iyz": 0.0
+          }
+        },
+        {
+          "name": "8",
+          "definition": [
+            "lbr_iiwa_14_r820_part_8.obj",
+            "lbr_iiwa_14_r820_part_8.mtl"
+          ],
+          "frames": [
+            {
+              "name": "8_distal",
+              "T": [
+                0.0,
+                0.0,
+                -0.0451
+              ]
+            }
+          ],
+          "center_of_mass": [
+            0.0,
+            0.0,
+            -0.0225
+          ],
+          "mass": 1.0,
+          "moment_of_inertia": {
+            "Izx": 0.0,
+            "Ixx": 1.0,
+            "Ixy": 0.0,
+            "Izz": 1.0,
+            "Iyy": 1.0,
+            "Iyz": 0.0
+          }
+        }
+      ],
+      "joints": [
+        {
+          "name": "fixed",
+          "body_frame_pairs": [
+            [
+              "fixed",
+              "origin"
+            ],
+            [
+              "1",
+              "origin"
+            ]
+          ],
+          "type": "rigid",
+          "initial_displacement": {
+            "T" :[0, 0, 0]
+          }
+        },
+        {
+          "name": "A",
+          "body_frame_pairs": [
+            [
+              "1",
+              "1_distal"
+            ],
+            [
+              "2",
+              "origin"
+            ]
+          ],
+          "type": "Rz",
+          "initial_displacement": 0.0,
+          "initial_velocity": 0.0
+        },
+        {
+          "name": "B",
+          "body_frame_pairs": [
+            [
+              "2",
+              "2_distal"
+            ],
+            [
+              "3",
+              "origin"
+            ]
+          ],
+          "type": "Ry",
+          "initial_displacement": 0.0,
+          "initial_velocity": 0.0
+        },
+        {
+          "name": "C",
+          "body_frame_pairs": [
+            [
+              "3",
+              "3_distal"
+            ],
+            [
+              "4",
+              "origin"
+            ]
+          ],
+          "type": "Rz",
+          "initial_displacement": 0.0,
+          "initial_velocity": 0.0
+        },
+        {
+          "name": "D",
+          "body_frame_pairs": [
+            [
+              "5",
+              "origin"
+            ],
+            [
+              "4",
+              "4_distal"
+            ]
+          ],
+          "type": "Ry",
+          "initial_displacement": 0.0,
+          "initial_velocity": 0.0
+        },
+        {
+          "name": "E",
+          "body_frame_pairs": [
+            [
+              "5",
+              "5_distal"
+            ],
+            [
+              "6",
+              "origin"
+            ]
+          ],
+          "type": "Rz",
+          "initial_displacement": 0.0,
+          "initial_velocity": 0.0
+        },
+        {
+          "name": "F",
+          "body_frame_pairs": [
+            [
+              "6",
+              "6_distal"
+            ],
+            [
+              "7",
+              "origin"
+            ]
+          ],
+          "type": "Ry",
+          "initial_displacement": 0.0,
+          "initial_velocity": 0.0
+        },
+        {
+          "name": "G",
+          "body_frame_pairs": [
+            [
+              "7",
+              "7_distal"
+            ],
+            [
+              "8",
+              "origin"
+            ]
+          ],
+          "type": "Rz",
+          "initial_displacement": 0.0,
+          "initial_velocity": 0.0
+        }
+      ]
+    }
+  ]
+}

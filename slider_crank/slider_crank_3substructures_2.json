@@ -1,0 +1,475 @@
+{
+  "model_parameters": {
+    "version": "0.2",
+    "units": {
+      "angle": "radians",
+      "length": "meters",
+      "mass": "kilograms",
+      "time": "seconds"
+    },
+    "gravity": [0.0, 0.0, 0.0],
+    "include_dir": [
+      "models/slider_crank/",
+      "examples/"
+    ],
+    "simulation": {
+      "integration_type": "ode113b",
+      "time_span": 20.0,
+      "time_step": 0.1,
+      "relative_error": 0.0,
+      "absolute_error": 1e-9,
+      "out_file": "slider_crank.dat",
+      "omega_n": 50.0
+    }
+  },
+  "fixed":{
+    "frames": [
+      {
+        "name": "1h_plus",
+        "R":[[0.0, 0.0, -1.0],
+             [0.0, 1.0, 0.0],
+             [1.0,  0.0, 0.0]]
+      },
+      {
+        "name": "overhead_1",
+        "T": [6.0, 6.0, -6.0]
+      },
+      {
+        "name": "overhead_2",
+        "T": [-6.0, 6.0, -6.0]
+      }
+    ],
+    "lights": [
+      {
+        "name": "overhead_1",
+        "type": "point",
+        "parent": ["fixed", "overhead_1"],
+        "Ka": [0.4, 0.4, 0.4],
+        "Kd" : [0.6, 0.6, 0.6],
+        "Ks" : [0.2, 0.2, 0.2]
+      },
+      {
+        "name": "overhead_2",
+        "type": "point",
+        "parent": ["fixed", "overhead_2"],
+        "Ka": [0.6, 0.6, 0.6],
+        "Kd" : [0.6, 0.6, 0.6],
+        "Ks" : [0.2, 0.2, 0.2]
+      }
+    ]
+  },
+  "assemblies": [
+    {
+      "name": "slider_crank",
+      "active":true,
+      "bodies": [
+        {
+          "name": "crank",
+          "definition": [
+            "crank.obj",
+            "crank.mtl"
+          ],
+          "frames": [
+            {
+              "name": "1h_plus",
+              "T": [0.0, 0.6, 0]
+            }
+          ],
+          "center_of_mass": [0.0, 0.3, 0.0],
+          "mass": 1.0,
+          "moment_of_inertia": {
+            "Ixx": 1.0,
+            "Ixy": 0.0,
+            "Izx": 0.0,
+            "Iyy": 0.1,
+            "Iyz": 0.0,
+            "Izz": 1.0
+          }
+        },
+
+        {
+          "name": "connecting_rod",
+          "definition": ["connecting_rod.obj", "connecting_rod.mtl"],
+          "frames": [
+            {
+              "name": "2h_plus",
+              "T": [0.0, 0.0, -1.5]
+            }
+          ],
+          "center_of_mass": [0.0, 0.0, -0.75],
+          "mass": 1.0,
+          "moment_of_inertia": {
+            "Ixx": 1.0,
+            "Ixy": 0.0,
+            "Izx": 0.0,
+            "Iyy": 1.0,
+            "Iyz": 0.0,
+            "Izz": 0.5
+          }
+        },
+
+        {
+          "name": "piston",
+          "definition": [
+            "piston.obj",
+            "piston.mtl"],
+          "frames": [
+            {
+              "name": "4h_plus",
+              "R": [
+                [1.0, 0.0, 0.0],
+                [0.0, 0.0, -1.0],
+                [0.0, 1.0, 0.0]
+              ]
+            }
+          ],
+          "center_of_mass": [0.0, 0.0, 0.0],
+          "mass": 1.0,
+          "moment_of_inertia": {
+            "Ixx": 1.0,
+            "Ixy": 0.0,
+            "Izx": 0.0,
+            "Iyy": 1.0,
+            "Iyz": 0.0,
+            "Izz": 1.0
+          }
+        },
+
+        {
+          "name": "crank2",
+          "definition": [
+            "crank.obj",
+            "crank.mtl"
+          ],
+          "frames": [
+            {
+              "name": "1h_plus",
+              "T": [0.0, 0.6, 0]
+            }
+          ],
+          "center_of_mass": [0.0, 0.3, 0.0],
+          "mass": 1.0,
+          "moment_of_inertia": {
+            "Ixx": 1.0,
+            "Ixy": 0.0,
+            "Izx": 0.0,
+            "Iyy": 0.1,
+            "Iyz": 0.0,
+            "Izz": 1.0
+          }
+        },
+
+        {
+          "name": "connecting_rod2",
+          "definition": ["connecting_rod.obj", "connecting_rod.mtl"],
+          "frames": [
+            {
+              "name": "2h_plus",
+              "T": [0.0, 0.0, -1.5]
+            }
+          ],
+          "center_of_mass": [0.0, 0.0, -0.75],
+          "mass": 1.0,
+          "moment_of_inertia": {
+            "Ixx": 1.0,
+            "Ixy": 0.0,
+            "Izx": 0.0,
+            "Iyy": 1.0,
+            "Iyz": 0.0,
+            "Izz": 0.5
+          }
+        },
+
+        {
+          "name": "piston2",
+          "definition": [
+            "piston.obj",
+            "piston.mtl"],
+          "frames": [
+            {
+              "name": "4h_plus",
+              "R": [
+                [1.0, 0.0, 0.0],
+                [0.0, 0.0, -1.0],
+                [0.0, 1.0, 0.0]
+              ]
+            }
+          ],
+          "center_of_mass": [0.0, 0.0, 0.0],
+          "mass": 1.0,
+          "moment_of_inertia": {
+            "Ixx": 1.0,
+            "Ixy": 0.0,
+            "Izx": 0.0,
+            "Iyy": 1.0,
+            "Iyz": 0.0,
+            "Izz": 1.0
+          }
+        },
+
+        {
+          "name": "crank3",
+          "definition": [
+            "crank.obj",
+            "crank.mtl"
+          ],
+          "frames": [
+            {
+              "name": "1h_plus",
+              "T": [0.0, 0.6, 0]
+            }
+          ],
+          "center_of_mass": [0.0, 0.3, 0.0],
+          "mass": 1.0,
+          "moment_of_inertia": {
+            "Ixx": 1.0,
+            "Ixy": 0.0,
+            "Izx": 0.0,
+            "Iyy": 0.1,
+            "Iyz": 0.0,
+            "Izz": 1.0
+          }
+        },
+
+        {
+          "name": "connecting_rod3",
+          "definition": ["connecting_rod.obj", "connecting_rod.mtl"],
+          "frames": [
+            {
+              "name": "2h_plus",
+              "T": [0.0, 0.0, -1.5]
+            }
+          ],
+          "center_of_mass": [0.0, 0.0, -0.75],
+          "mass": 1.0,
+          "moment_of_inertia": {
+            "Ixx": 1.0,
+            "Ixy": 0.0,
+            "Izx": 0.0,
+            "Iyy": 1.0,
+            "Iyz": 0.0,
+            "Izz": 0.5
+          }
+        },
+
+        {
+          "name": "piston3",
+          "definition": [
+            "piston.obj",
+            "piston.mtl"],
+          "frames": [
+            {
+              "name": "4h_plus",
+              "R": [
+                [1.0, 0.0, 0.0],
+                [0.0, 0.0, -1.0],
+                [0.0, 1.0, 0.0]
+              ]
+            }
+          ],
+          "center_of_mass": [0.0, 0.0, 0.0],
+          "mass": 1.0,
+          "moment_of_inertia": {
+            "Ixx": 1.0,
+            "Ixy": 0.0,
+            "Izx": 0.0,
+            "Iyy": 1.0,
+            "Iyz": 0.0,
+            "Izz": 1.0
+          }
+        },
+
+        {
+          "name": "crank3_2",
+          "definition": [
+            "crank.obj",
+            "crank.mtl"
+          ],
+          "frames": [
+            {
+              "name": "1h_plus",
+              "T": [0.0, 0.6, 0]
+            }
+          ],
+          "center_of_mass": [0.0, 0.3, 0.0],
+          "mass": 1.0,
+          "moment_of_inertia": {
+            "Ixx": 1.0,
+            "Ixy": 0.0,
+            "Izx": 0.0,
+            "Iyy": 0.1,
+            "Iyz": 0.0,
+            "Izz": 1.0
+          }
+        },
+
+        {
+          "name": "connecting_rod3_2",
+          "definition": ["connecting_rod.obj", "connecting_rod.mtl"],
+          "frames": [
+            {
+              "name": "2h_plus",
+              "T": [0.0, 0.0, -1.5]
+            }
+          ],
+          "center_of_mass": [0.0, 0.0, -0.75],
+          "mass": 1.0,
+          "moment_of_inertia": {
+            "Ixx": 1.0,
+            "Ixy": 0.0,
+            "Izx": 0.0,
+            "Iyy": 1.0,
+            "Iyz": 0.0,
+            "Izz": 0.5
+          }
+        }
+      ],
+
+      "joints": [
+        {
+          "name": "A_fixed_crank",
+          "body_frame_pairs":[
+            ["fixed", "origin"],
+            ["crank", "origin"]
+          ],
+          "type": "Rx",
+          "initial_displacement": 5.33109,
+          "initial_velocity": 0.0
+        },
+        {
+          "name": "B_fixed_piston",
+          "body_frame_pairs": [
+            ["fixed", "origin"],
+            ["piston", "4h_plus"]
+          ],
+          "type": "Ty",
+          "initial_displacement": 1.76612,
+          "initial_velocity": 0.0
+        },
+        {
+          "name": "C_connecting_rod_piston",
+          "body_frame_pairs":[
+            ["connecting_rod", "2h_plus"],
+            ["piston", "origin"]
+          ],
+          "type":"Rx",
+          "initial_displacement": 2.80968,
+          "initial_velocity": 0.0
+        },
+        {
+          "name": "D_crank_connecting_rod",
+          "body_frame_pairs": [
+            ["crank", "1h_plus"],
+            ["connecting_rod", "origin"]
+          ],
+          "type": "Rx",
+          "initial_displacement": 2.85480,
+          "initial_velocity": 0.0
+        },
+        {
+          "name": "E_piston_crank2",
+          "body_frame_pairs":[
+            ["piston", "origin"],
+            ["crank2", "origin"]
+          ],
+          "type": "Rx",
+          "initial_displacement": 5.33109,
+          "initial_velocity": 0.0
+        },
+        {
+          "name": "F_piston_piston2",
+          "body_frame_pairs": [
+            ["piston", "4h_plus"],
+            ["piston2", "4h_plus"]
+          ],
+          "type": "Ty",
+          "initial_displacement": 1.76612,
+          "initial_velocity": 0.0
+        },
+        {
+          "name": "G_connecting_rod_piston",
+          "body_frame_pairs":[
+            ["connecting_rod2", "2h_plus"],
+            ["piston2", "origin"]
+          ],
+          "type":"Rx",
+          "initial_displacement": 2.80968,
+          "initial_velocity": 0.0
+        },
+        {
+          "name": "H_crank2_connecting_rod2",
+          "body_frame_pairs": [
+            ["crank2", "1h_plus"],
+            ["connecting_rod2", "origin"]
+          ],
+          "type": "Rx",
+          "initial_displacement": 2.85480,
+          "initial_velocity": 0.0
+        },
+        {
+          "name": "I_piston2_crank3",
+          "body_frame_pairs":[
+            ["piston2", "origin"],
+            ["crank3", "origin"]
+          ],
+          "type": "Rx",
+          "initial_displacement": 5.33109,
+          "initial_velocity": 0.0
+        },
+        {
+          "name": "J_piston_piston2",
+          "body_frame_pairs": [
+            ["piston2", "4h_plus"],
+            ["piston3", "4h_plus"]
+          ],
+          "type": "Ty",
+          "initial_displacement": 1.76612,
+          "initial_velocity": 0.0
+        },
+        {
+          "name": "K_connecting_rod3_piston3",
+          "body_frame_pairs":[
+            ["connecting_rod3", "2h_plus"],
+            ["piston3", "origin"]
+          ],
+          "type":"Rx",
+          "initial_displacement": 2.80968,
+          "initial_velocity": 0.0
+        },
+
+        {
+          "name": "L_crank3_connecting_rod3",
+          "body_frame_pairs": [
+            ["crank3", "1h_plus"],
+            ["connecting_rod3", "origin"]
+          ],
+          "type": "Rx",
+          "initial_displacement": 2.85480,
+          "initial_velocity": 0.0
+        },
+
+        {
+          "name": "I_piston2_crank3_2",
+          "body_frame_pairs":[
+            ["piston2", "origin"],
+            ["crank3_2", "origin"]
+          ],
+          "type": "Rx",
+          "initial_displacement": 5.33109,
+          "initial_velocity": 0.0
+        },
+
+        {
+          "name": "K_connecting_rod3_piston3",
+          "body_frame_pairs":[
+            ["connecting_rod3_2", "2h_plus"],
+            ["piston3", "origin"]
+          ],
+          "type":"Rx",
+          "initial_displacement": 2.80968,
+          "initial_velocity": 0.0
+        }
+      ]
+    }
+  ]
+}

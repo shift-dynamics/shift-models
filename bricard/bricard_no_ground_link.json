@@ -1,0 +1,357 @@
+{
+  "model_parameters": {
+    "version": "0.2",
+    "units": {
+      "angle": "radians",
+      "length": "meters",
+      "mass": "kilograms",
+      "time": "seconds"
+    },
+    "gravity": [
+      0.0,
+      0.0,
+      9.81
+    ],
+    "include_dir": [
+      "models/bricard/",
+      "bricard/"
+    ],
+    "simulation": {
+      "integration_type": "ode113b",
+      "time_span": 100.0,
+      "time_step": 0.01,
+      "relative_error": 0.0,
+      "absolute_error": 1e-8,
+      "omega_n": 100,
+      "out_file": "bricard.dat",
+      "infinity_norm_multiplier": 2.0
+    }
+  },
+  "fixed": {
+    "frames": [
+      {
+        "name": "overhead_1",
+        "T": [6.0, -6.0, -6.0],
+        "R": [[1.0, 0.0, 0.0],
+              [0.0, 1.0, 0.0],
+              [0.0, 0.0, 1.0]]
+      },
+      {
+        "name": "overhead_2",
+        "T": [-6.0, -6.0, -6.0],
+        "R": [[1.0, 0.0, 0.0],
+              [0.0, 1.0, 0.0],
+              [0.0, 0.0, 1.0]]
+      },
+      {
+        "name": "attachment",
+        "T": [0, 0, 0]
+      },
+      {
+        "name": "distal",
+        "R": [[0, 0, -1],
+              [0, 1, 0],
+              [1, 0, 0]],
+        "T": [
+          0,
+          -1.5,
+          0
+        ]
+      }
+    ],
+    "lights": [
+      {
+        "name": "overhead_1",
+        "type": "point",
+        "parent": ["fixed", "overhead_1"],
+        "Ka": [0.4, 0.4, 0.4],
+        "Kd": [0.6, 0.6, 0.6],
+        "Ks": [0.2, 0.2, 0.2]
+      },
+      {
+        "name": "overhead_2",
+        "type": "point",
+        "parent": ["fixed", "overhead_2"],
+        "Ka": [0.6, 0.6, 0.6],
+        "Kd": [0.6, 0.6, 0.6],
+        "Ks": [0.2, 0.2, 0.2]
+      }
+    ]
+  },
+  "assemblies": [
+    {
+      "name": "bricard_mechanism",
+      "active": true,
+      "bodies": [
+        {
+          "name": "2",
+          "definition": [
+            "link1.obj",
+            "link1.mtl"
+          ],
+          "frames": [
+            {
+              "name": "2_distal",
+              "R": [[0, 0, -1],
+                    [0, 1, 0],
+                    [1, 0, 0]],
+              "T": [
+                0,
+                -1.5,
+                0
+              ]
+            }
+          ],
+          "center_of_mass": [
+            0.0,
+            -0.75,
+            0.0
+          ],
+          "mass": 1.0,
+          "moment_of_inertia": {
+            "Izx": 0.0,
+            "Ixx": 0.1875,
+            "Ixy": 0.0,
+            "Izz": 0.01,
+            "Iyy": 0.1875,
+            "Iyz": 0.0
+          }
+        },
+        {
+          "name": "3",
+          "definition": [
+            "link1.obj",
+            "link1.mtl"
+          ],
+          "frames": [
+            {
+              "name": "3_distal",
+              "R": [[0, 0, -1],
+                    [0, 1, 0],
+                    [1, 0, 0]],
+              "T": [
+                0,
+                -1.5,
+                0
+              ]
+            }
+          ],
+          "center_of_mass": [
+            0.0,
+            -0.75,
+            0.0
+          ],
+          "mass": 1.0,
+          "moment_of_inertia": {
+            "Izx": 0.0,
+            "Ixx": 0.1875,
+            "Ixy": 0.0,
+            "Izz": 0.01,
+            "Iyy": 0.1875,
+            "Iyz": 0.0
+          }
+        },
+        {
+          "name": "4",
+          "definition": [
+            "link1.obj",
+            "link1.mtl"
+          ],
+          "frames": [
+            {
+              "name": "4_distal",
+              "R": [[0, 0, -1],
+                    [0, 1, 0],
+                    [1, 0, 0]],
+              "T": [
+                0,
+                -1.5,
+                0
+              ]
+            }
+          ],
+          "center_of_mass": [
+            0.0,
+            -0.75,
+            0.0
+          ],
+          "mass": 1.0,
+          "moment_of_inertia": {
+            "Izx": 0.0,
+            "Ixx": 0.1875,
+            "Ixy": 0.0,
+            "Izz": 0.01,
+            "Iyy": 0.1875,
+            "Iyz": 0.0
+          }
+        },
+        {
+          "name": "5",
+          "definition": [
+            "link1.obj",
+            "link1.mtl"
+          ],
+          "frames": [
+            {
+              "name": "5_distal",
+              "R": [[0, 0, 1],
+                    [0, 1, 0],
+                    [-1, 0, 0]],
+              "T": [
+                0,
+                -1.5,
+                0
+              ]
+            }
+          ],
+          "center_of_mass": [
+            0.0,
+            -0.75,
+            0.0
+          ],
+          "mass": 1.0,
+          "moment_of_inertia": {
+            "Izx": 0.0,
+            "Ixx": 0.1875,
+            "Ixy": 0.0,
+            "Izz": 0.01,
+            "Iyy": 0.1875,
+            "Iyz": 0.0
+          }
+        },
+        {
+          "name": "6",
+          "definition": [
+            "link2.obj",
+            "link2.mtl"
+          ],
+          "frames": [
+            {
+              "name": "6_distal",
+              "R": [[0, 0, -1],
+                    [0, 1, 0],
+                    [1, 0, 0]],
+              "T": [
+                0,
+                -1.5,
+                0
+              ]
+            }
+          ],
+          "center_of_mass": [
+            0.0,
+            -0.75,
+            0.0
+          ],
+          "mass": 1.0,
+          "moment_of_inertia": {
+            "Izx": 0.0,
+            "Ixx": 0.1875,
+            "Ixy": 0.0,
+            "Izz": 0.01,
+            "Iyy": 0.1875,
+            "Iyz": 0.0
+          }
+        }
+      ],
+      "joints": [
+        {
+          "name": "A",
+          "body_frame_pairs": [
+            [
+              "2",
+              "origin"
+            ],
+            [
+              "fixed",
+              "distal"
+            ]
+          ],
+          "type": "Rx",
+          "initial_displacement": 0.776,
+          "initial_velocity": 0
+        },
+        {
+          "name": "B",
+          "body_frame_pairs": [
+            [
+              "2",
+              "2_distal"
+            ],
+            [
+              "3",
+              "origin"
+            ]
+          ],
+          "type": "Rx",
+          "initial_displacement": -2.0,
+          "initial_velocity": 0
+        },
+        {
+          "name": "C",
+          "body_frame_pairs": [
+            [
+              "3",
+              "3_distal"
+            ],
+            [
+              "4",
+              "origin"
+            ]
+          ],
+          "type": "Rx",
+          "initial_displacement": 0.776,
+          "initial_velocity": 0
+        },
+        {
+          "name": "D",
+          "body_frame_pairs": [
+            [
+              "5",
+              "origin"
+            ],
+            [
+              "4",
+              "4_distal"
+            ]
+          ],
+          "type": "Rx",
+          "initial_displacement": -2.0,
+          "initial_velocity": 0
+        },
+        {
+          "name": "E",
+          "body_frame_pairs": [
+            [
+              "5",
+              "5_distal"
+            ],
+            [
+              "6",
+              "origin"
+            ]
+          ],
+          "type": "Rx",
+          "initial_displacement": 0.776,
+          "initial_velocity": 0
+        },
+        {
+          "name": "F",
+          "body_frame_pairs": [
+            [
+              "fixed",
+              "origin"
+            ],
+            [
+              "6",
+              "6_distal"
+            ]
+          ],
+          "type": "Rx",
+          "initial_displacement": -2.0,
+          "initial_velocity": 0
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,463 @@
+{
+  "model_parameters": {
+    "version": "0.2",
+    "units": {
+      "angle": "radians",
+      "length": "meters",
+      "mass": "kilograms",
+      "time": "seconds"
+    },
+    "gravity": [
+      0.0,
+      0.0,
+      9.81
+    ],
+    "include_dir": [
+      "models/brake/"
+    ]
+  },
+  "fixed": {
+    "frames": [
+      {
+        "name": "overhead_1",
+        "T": [6.0, -6.0, -6.0],
+        "R": [[1.0, 0.0, 0.0],
+              [0.0, 1.0, 0.0],
+              [0.0, 0.0, 1.0]]
+      },
+      {
+        "name": "overhead_2",
+        "T": [-6.0, 6.0, -6.0],
+        "R": [[1.0, 0.0, 0.0],
+              [0.0, 1.0, 0.0],
+              [0.0, 0.0, 1.0]]
+      }
+    ],
+    "lights": [
+      {
+        "name": "overhead_1",
+        "type": "point",
+        "parent": ["fixed", "overhead_1"],
+        "Ka": [0.4, 0.4, 0.4],
+        "Kd": [0.6, 0.6, 0.6],
+        "Ks": [0.2, 0.2, 0.2]
+      },
+      {
+        "name": "overhead_2",
+        "type": "point",
+        "parent": ["fixed", "overhead_2"],
+        "Ka": [0.6, 0.6, 0.6],
+        "Kd": [0.6, 0.6, 0.6],
+        "Ks": [0.2, 0.2, 0.2]
+      }
+    ]
+  },
+  "assemblies": [
+    {
+      "name": "brake",
+      "active": true,
+      "bodies": [
+        {
+          "name": "bridge",
+          "definition": [
+            "bridge.obj",
+            "bridge.mtl"
+          ],
+          "frames": [
+            {
+              "name": "right_arm_attachment",
+              "T": [
+                2.74954542,
+                1.73,
+                1.2
+              ]
+            },
+            {
+              "name": "left_arm_attachment",
+              "T": [
+                0.0,
+                1.73,
+                0.0
+              ]
+            }
+          ],
+          "center_of_mass": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "mass": 2.0,
+          "moment_of_inertia": {
+            "Izx": 0.0,
+            "Ixx": 1.0,
+            "Ixy": 0.0,
+            "Izz": 1.0,
+            "Iyy": 1.0,
+            "Iyz": 0.0
+          }
+        },
+        {
+          "name": "left arm",
+          "definition": [
+            "left_arm.obj",
+            "left_arm.mtl"
+          ],
+          "frames": [
+            {
+              "name": "upper_cable_holder_attachment",
+              "T": [
+                -4.05042589,
+                0.35,
+                -2.50921836
+              ]
+            },
+            {
+              "name": "screw_attachment",
+              "T": [
+                1.64968853,
+                0.35,
+                0.71995217
+              ]
+            },
+            {
+              "name": "left_pad_attachment",
+              "T": [
+                -1.28954542,
+                1.0,
+                4.5
+              ]
+            }
+          ],
+          "center_of_mass": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "mass": 2.0,
+          "moment_of_inertia": {
+            "Izx": 0.0,
+            "Ixx": 1.0,
+            "Ixy": 0.0,
+            "Izz": 1.0,
+            "Iyy": 1.0,
+            "Iyz": 0.0
+          }
+        },
+        {
+          "name": "right arm",
+          "definition": [
+            "right_arm.obj",
+            "right_arm.mtl"
+          ],
+          "frames": [
+            {
+              "name": "lower_cable_holder_attachment",
+              "T": [
+                -7.14074547,
+                0.75,
+                0.47928029
+              ]
+            },
+            {
+              "name": "right_pad_attachment",
+              "T": [
+                -1.46,
+                1.0,
+                3.3
+              ]
+            },
+            {
+              "name": "screw_attachment",
+              "T": [
+                0,
+                0.35,
+                0
+              ],
+              "R" : [
+                [0.91651513741816326, 0, -0.40000000360420673],
+                [0, 1, 0],
+                [0.40000000360420673, 0, 0.91651513741816326]
+              ]
+            }
+          ],
+          "center_of_mass": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "mass": 2.0,
+          "moment_of_inertia": {
+            "Izx": 0.0,
+            "Ixx": 1.0,
+            "Ixy": 0.0,
+            "Izz": 1.0,
+            "Iyy": 1.0,
+            "Iyz": 0.0
+          }
+        },
+        {
+          "name": "upper cable holder",
+          "definition": [
+            "upper_cable_holder.obj",
+            "upper_cable_holder.mtl"
+          ],
+          "center_of_mass": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "mass": 2.0,
+          "moment_of_inertia": {
+            "Izx": 0.0,
+            "Ixx": 1.0,
+            "Ixy": 0.0,
+            "Izz": 1.0,
+            "Iyy": 1.0,
+            "Iyz": 0.0
+          }
+        },
+        {
+          "name": "lower cable holder",
+          "definition": [
+            "lower_cable_holder.obj",
+            "lower_cable_holder.mtl"
+          ],
+          "frames": [
+            {
+              "name": "upper_cable_attachment",
+              "T": [
+                0,
+                -0.4,
+                0
+              ]
+            }
+          ],
+          "center_of_mass": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "mass": 2.0,
+          "moment_of_inertia": {
+            "Izx": 0.0,
+            "Ixx": 1.0,
+            "Ixy": 0.0,
+            "Izz": 1.0,
+            "Iyy": 1.0,
+            "Iyz": 0.0
+          }
+        },
+        {
+          "name": "massless body 1"
+        },
+        {
+          "name": "massless body 2"
+        },
+        {
+          "name": "massless body 3"
+        }
+      ],
+      "joints": [
+        {
+          "name": "A",
+          "body_frame_pairs": [
+            [
+              "fixed",
+              "origin"
+            ],
+            [
+              "bridge",
+              "origin"
+            ]
+          ],
+          "type": "rigid",
+          "initial_displacement": {
+            "R": [
+              [
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "T": [
+              0,
+              0,
+              0
+            ]
+          },
+          "initial_velocity": 0.0
+        },
+        {
+          "name": "B",
+          "body_frame_pairs": [
+            [
+              "bridge",
+              "left_arm_attachment"
+            ],
+            [
+              "left arm",
+              "origin"
+            ]
+          ],
+          "type": "Ry",
+          "initial_displacement": 0.0,
+          "initial_velocity": 0.0
+        },
+        {
+          "name": "C",
+          "body_frame_pairs": [
+            [
+              "bridge",
+              "right_arm_attachment"
+            ],
+            [
+              "right arm",
+              "origin"
+            ]
+          ],
+          "type": "Ry",
+          "initial_displacement": 0.0,
+          "initial_velocity": 0.0
+        },
+        {
+          "name": "D",
+          "body_frame_pairs": [
+            [
+              "left arm",
+              "upper_cable_holder_attachment"
+            ],
+            [
+              "upper cable holder",
+              "origin"
+            ]
+          ],
+          "type": "Ry",
+          "initial_displacement": -0.08118008,
+          "initial_velocity": 0.0
+        },
+        {
+          "name": "E",
+          "body_frame_pairs": [
+            [
+              "left arm",
+              "left_pad_attachment"
+            ],
+            [
+              "massless body 2",
+              "origin"
+            ]
+          ],
+          "type": "Ry",
+          "initial_displacement": 0.0,
+          "initial_velocity": 0.0
+        },
+        {
+          "name": "F",
+          "body_frame_pairs": [
+            [
+              "left arm",
+              "screw_attachment"
+            ],
+            [
+              "massless body 1",
+              "origin"
+            ]
+          ],
+          "type": "Ry",
+          "initial_displacement": -0.41151685,
+          "initial_velocity": 0.0
+        },
+        {
+          "name": "G",
+          "body_frame_pairs": [
+            [
+              "right arm",
+              "screw_attachment"
+            ],
+            [
+              "massless body 1",
+              "origin"
+            ]
+          ],
+          "type": "Tx",
+          "initial_displacement": -1.2,
+          "initial_velocity": 0.0
+        },
+        {
+          "name": "H",
+          "body_frame_pairs": [
+            [
+              "right arm",
+              "lower_cable_holder_attachment"
+            ],
+            [
+              "lower cable holder",
+              "origin"
+            ]
+          ],
+          "type": "Ry",
+          "initial_displacement": -0.08118008,
+          "initial_velocity": 0.0
+        },
+        {
+          "name": "I",
+          "body_frame_pairs": [
+            [
+              "upper cable holder",
+              "origin"
+            ],
+            [
+              "lower cable holder",
+              "upper_cable_attachment"
+            ]
+          ],
+          "type": "Tz",
+          "initial_displacement": 4.20233818,
+          "initial_velocity": 0.0
+        },
+        {
+          "name": "J",
+          "body_frame_pairs": [
+            [
+              "right arm",
+              "right_pad_attachment"
+            ],
+            [
+              "massless body 3",
+              "origin"
+            ]
+          ],
+          "type": "Ry",
+          "initial_displacement": 0.0,
+          "initial_velocity": 0.0
+        },
+        {
+          "name": "K",
+          "body_frame_pairs": [
+            [
+              "massless body 2",
+              "origin"
+            ],
+            [
+              "massless body 3",
+              "origin"
+            ]
+          ],
+          "type": "Tx",
+          "initial_displacement": 2.57909083,
+          "initial_velocity": 0.0
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "model_parameters": {
+    "version": "2.0",
+    "units": {
+      "angle": "radians",
+      "length": "meters",
+      "mass": "kilograms",
+      "time": "seconds"
+    },
+    "gravity": [
+      0.0,
+      0,
+      9.81
+    ],
+    "include_dir": [
+      "."
+    ]
+  },
+  "assemblies": [
+    {
+      "name": "main_assembly",
+      "assemblies": [],
+      "bodies": [
+        {
+          "name": "cube",
+          "definition": [
+            "cube.obj",
+            "cube.mtl"
+          ],
+          "mass": 1,
+          "center_of_mass": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "frames": null,
+          "moment_of_inertia": {
+            "Ixx": 1.0,
+            "Ixy": 0.0,
+            "Izx": 0.0,
+            "Iyy": 1.0,
+            "Iyz": 0.0,
+            "Izz": 1.0
+          }
+        }
+      ],
+      "joints": [
+        {
+          "name": "joint1",
+          "body_frame_pairs": [
+            [
+              "fixed",
+              "origin"
+            ],
+            [
+              "cube",
+              "origin"
+            ]
+          ],
+          "type": "Rx",
+          "initial_displacement": 0.0,
+          "initial_velocity": 0
+        }
+      ],
+      "active": true
+    }
+  ]
+}

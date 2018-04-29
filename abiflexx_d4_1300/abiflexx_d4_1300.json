@@ -1,0 +1,899 @@
+{
+  "model_parameters": {
+    "version": "0.2",
+    "units": {
+      "angle": "radians",
+      "length": "meters",
+      "mass": "kilograms",
+      "time": "seconds"
+    },
+    "gravity": [
+      0.0,
+      0.0,
+      9.81
+    ],
+    "include_dir": null,
+    "simulation": {
+      "integration_type": "ode113b",
+      "time_span": 5.0,
+      "time_step": 0.01,
+      "relative_error": 1e-4,
+      "absolute_error": 1e-4,
+      "omega_n": 50.0
+    }
+  },
+  "fixed": {
+    "frames": [
+      {
+        "name": "overhead_1",
+        "T": [0.0, 0.0, -24.0],
+        "R": [[1.0, 0.0, 0.0],
+              [0.0, -1.0, 0.0],
+              [0.0, 0.0, -1.0]]
+      },
+      {
+        "name": "overhead_2",
+        "T": [36.0, 36.0, -12.0],
+        "R": [[1.0, 0.0, 0.0],
+              [0.0, -1.0, 0.0],
+              [0.0, 0.0, -1.0]]
+      }
+    ],
+    "lights": [
+      {
+        "name": "overhead_1",
+        "type": "point",
+        "parent": ["fixed", "overhead_1"],
+        "Ka": [0.1, 0.1, 0.1],
+        "Kd": [0.8, 0.8, 0.8],
+        "Ks": [1.0, 1.0, 1.0]
+      },
+      {
+        "name": "overhead_2",
+        "type": "point",
+        "parent": ["fixed", "overhead_2"],
+        "Ka": [0.1, 0.1, 0.1],
+        "Kd": [0.8, 0.8, 0.8],
+        "Ks": [1.0, 1.0, 1.0]
+      }
+    ]
+  },
+  "assemblies": [
+    {
+      "name": "Abiflexx D4 1300",
+      "active": true,
+      "bodies": [
+        {
+          "name": "base",
+          "definition": [
+            "abiflexx_d4_1300_base.obj",
+            "abiflexx_d4_1300_base.mtl"
+          ],
+          "frames": [
+            {
+              "name": "base_1",
+              "R": [[0, 0, 1],
+                    [0, 1, 0],
+                    [-1, 0, 0]],
+              "T": [
+                0.03812152,
+                0.24998566,
+                0.09
+              ]
+            },
+            {
+              "name": "base_2",
+              "R": [[0, -0.8660254037844386, -0.5],
+                    [0, -0.5, 0.8660254037844386],
+                    [-1, 0, 0]],
+              "T": [
+                -0.23555469,
+                -0.09197863,
+                0.09
+              ]
+            },
+            {
+              "name": "base_3",
+              "R": [[0, 0.8660254037844386, -0.5],
+                    [0, -0.5, -0.8660254037844386],
+                    [-1, 0, 0]],
+              "T": [
+                0.19743317,
+                -0.15800703,
+                0.09
+              ]
+            }
+          ],
+          "center_of_mass": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "mass": 2.0,
+          "moment_of_inertia": {
+            "Izx": 0.0,
+            "Ixx": 2.0,
+            "Ixy": 0.0,
+            "Izz": 2.0,
+            "Iyy": 2.0,
+            "Iyz": 0.0
+          }
+        },
+        {
+          "name": "link_upper_1",
+          "definition": [
+            "abiflexx_d4_1300_link_upper.obj",
+            "abiflexx_d4_1300_link_upper.mtl"
+          ],
+          "frames": [
+            {
+              "name": "distal_1",
+              "T": [
+                -0.042,
+                0.39778889,
+                0.014
+              ],
+              "R": [
+                [-1, 0, 0],
+                [0, 1, 0],
+                [0, 0, -1]
+              ]
+            },
+            {
+              "name": "distal_2",
+              "T": [
+                -0.042,
+                0.39778889,
+                -0.091
+              ]
+            }
+          ],
+          "center_of_mass": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "mass": 1.0,
+          "moment_of_inertia": {
+            "Izx": 0.0,
+            "Ixx": 1.0,
+            "Ixy": 0.0,
+            "Izz": 1.0,
+            "Iyy": 1.0,
+            "Iyz":0.0
+          }
+        },
+        {
+          "name": "link_upper_2",
+          "definition": [
+            "abiflexx_d4_1300_link_upper.obj",
+            "abiflexx_d4_1300_link_upper.mtl"
+          ],
+          "frames": [
+            {
+              "name": "distal_1",
+              "T": [
+                -0.042,
+                0.39778889,
+                0.014
+              ],
+              "R": [
+                [-1, 0, 0],
+                [0, 1, 0],
+                [0, 0, -1]
+              ]
+            },
+            {
+              "name": "distal_2",
+              "T": [
+                -0.042,
+                0.39778889,
+                -0.091
+              ]
+            }
+          ],
+          "center_of_mass": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "mass": 1.0,
+          "moment_of_inertia": {
+            "Izx": 0.0,
+            "Ixx": 1.0,
+            "Ixy": 0.0,
+            "Izz": 1.0,
+            "Iyy": 1.0,
+            "Iyz":0.0
+          }
+        },
+        {
+          "name": "link_upper_3",
+          "definition": [
+            "abiflexx_d4_1300_link_upper.obj",
+            "abiflexx_d4_1300_link_upper.mtl"
+          ],
+          "frames": [
+            {
+              "name": "distal_1",
+              "T": [
+                -0.042,
+                0.39778889,
+                0.014
+              ],
+              "R": [
+                [-1, 0, 0],
+                [0, 1, 0],
+                [0, 0, -1]
+              ]
+            },
+            {
+              "name": "distal_2",
+              "T": [
+                -0.042,
+                0.39778889,
+                -0.091
+              ]
+            }
+          ],
+          "center_of_mass": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "mass": 1.0,
+          "moment_of_inertia": {
+            "Izx": 0.0,
+            "Ixx": 1.0,
+            "Ixy": 0.0,
+            "Izz": 1.0,
+            "Iyy": 1.0,
+            "Iyz":0.0
+          }
+        },
+        {
+          "name": "link_lower_1",
+          "definition": [
+            "abiflexx_d4_1300_link_lower.obj",
+            "abiflexx_d4_1300_link_lower.mtl"
+          ],
+          "frames": [
+            {
+              "name": "distal",
+              "T": [
+                0.0,
+                0.95,
+                0.0
+              ]
+            }
+          ],
+          "center_of_mass": [
+            0.0,
+            0.425,
+            0.0
+          ],
+          "mass": 1.0,
+          "moment_of_inertia": {
+            "Izx": 0.0,
+            "Ixx": 1.0,
+            "Ixy": 0.0,
+            "Izz": 1.0,
+            "Iyy": 1.0,
+            "Iyz":0.0
+          }
+        },
+        {
+          "name": "link_lower_2",
+          "definition": [
+            "abiflexx_d4_1300_link_lower.obj",
+            "abiflexx_d4_1300_link_lower.mtl"
+          ],
+          "frames": [
+            {
+              "name": "distal",
+              "T": [
+                0.0,
+                0.95,
+                0.0
+              ]
+            }
+          ],
+          "center_of_mass": [
+            0.0,
+            0.425,
+            0.0
+          ],
+          "mass": 1.0,
+          "moment_of_inertia": {
+            "Izx": 0.0,
+            "Ixx": 1.0,
+            "Ixy": 0.0,
+            "Izz": 1.0,
+            "Iyy": 1.0,
+            "Iyz":0.0
+          }
+        },
+        {
+          "name": "link_lower_3",
+          "definition": [
+            "abiflexx_d4_1300_link_lower.obj",
+            "abiflexx_d4_1300_link_lower.mtl"
+          ],
+          "frames": [
+            {
+              "name": "distal",
+              "T": [
+                0.0,
+                0.95,
+                0.0
+              ]
+            }
+          ],
+          "center_of_mass": [
+            0.0,
+            0.425,
+            0.0
+          ],
+          "mass": 1.0,
+          "moment_of_inertia": {
+            "Izx": 0.0,
+            "Ixx": 1.0,
+            "Ixy": 0.0,
+            "Izz": 1.0,
+            "Iyy": 1.0,
+            "Iyz":0.0
+          }
+        },
+        {
+          "name": "link_lower_4",
+          "definition": [
+            "abiflexx_d4_1300_link_lower.obj",
+            "abiflexx_d4_1300_link_lower.mtl"
+          ],
+          "frames": [
+            {
+              "name": "distal",
+              "T": [
+                0.0,
+                0.95,
+                0.0
+              ]
+            }
+          ],
+          "center_of_mass": [
+            0.0,
+            0.425,
+            0.0
+          ],
+          "mass": 1.0,
+          "moment_of_inertia": {
+            "Izx": 0.0,
+            "Ixx": 1.0,
+            "Ixy": 0.0,
+            "Izz": 1.0,
+            "Iyy": 1.0,
+            "Iyz":0.0
+          }
+        },
+        {
+          "name": "link_lower_5",
+          "definition": [
+            "abiflexx_d4_1300_link_lower.obj",
+            "abiflexx_d4_1300_link_lower.mtl"
+          ],
+          "frames": [
+            {
+              "name": "distal",
+              "T": [
+                0.0,
+                0.95,
+                0.0
+              ]
+            }
+          ],
+          "center_of_mass": [
+            0.0,
+            0.425,
+            0.0
+          ],
+          "mass": 1.0,
+          "moment_of_inertia": {
+            "Izx": 0.0,
+            "Ixx": 1.0,
+            "Ixy": 0.0,
+            "Izz": 1.0,
+            "Iyy": 1.0,
+            "Iyz":0.0
+          }
+        },
+        {
+          "name": "link_lower_6",
+          "definition": [
+            "abiflexx_d4_1300_link_lower.obj",
+            "abiflexx_d4_1300_link_lower.mtl"
+          ],
+          "frames": [
+            {
+              "name": "distal",
+              "T": [
+                0.0,
+                0.95,
+                0.0
+              ]
+            }
+          ],
+          "center_of_mass": [
+            0.0,
+            0.425,
+            0.0
+          ],
+          "mass": 1.0,
+          "moment_of_inertia": {
+            "Izx": 0.0,
+            "Ixx": 1.0,
+            "Ixy": 0.0,
+            "Izz": 1.0,
+            "Iyy": 1.0,
+            "Iyz":0.0
+          }
+        },
+        {
+          "name": "end_effector",
+          "definition": [
+            "abiflexx_d4_1300_end_effector.obj",
+            "abiflexx_d4_1300_end_effector.mtl"
+          ],
+          "frames": [
+            {
+              "name": "distal_1",
+              "T": [
+                0.0525,
+                0.05,
+                -0.06045543
+              ],
+              "R": [
+                [0, 0, -1],
+                [0, 1, 0],
+                [1, 0, 0]
+              ]
+            },
+            {
+              "name": "distal_2",
+              "T": [
+                -0.0525,
+                0.05,
+                -0.06045543
+              ],
+              "R": [
+                [0, 0, 1],
+                [0, 1, 0],
+                [-1, 0, 0]
+              ]
+            },
+            {
+              "name": "distal_3",
+              "T": [
+                -0.06955127,
+                0.02046633,
+                -0.06045543
+              ],
+              "R": [
+                [0, -0.8660254037844386, 0.5],
+                [0, -0.5, -0.8660254037844386],
+                [1, 0, 0]
+              ]
+            },
+            {
+              "name": "distal_4",
+              "T": [
+                -0.01705127,
+                -0.07046633,
+                -0.06045543
+              ],
+              "R": [
+                [0, -0.8660254037844386, -0.5],
+                [0, -0.5, 0.8660254037844386],
+                [-1, 0, 0]
+              ]
+            },
+
+            {
+              "name": "distal_5",
+              "T": [
+                0.01705127,
+                -0.07046633,
+                -0.06045543
+              ],
+              "R": [
+                [0, 0.8660254037844386, 0.5],
+                [0, -0.5, 0.8660254037844386],
+                [1, 0, 0]
+              ]
+            },
+            {
+              "name": "distal_6",
+              "T": [
+                0.06955127,
+                0.02046633,
+                -0.06045543
+              ],
+              "R": [
+                [0, 0.8660254037844386, -0.5],
+                [0, -0.5, -0.8660254037844386],
+                [-1, 0, 0]
+              ]
+            }
+          ],
+          "center_of_mass": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "mass": 1.0,
+          "moment_of_inertia": {
+            "Izx": 0.0,
+            "Ixx": 1.0,
+            "Ixy": 0.0,
+            "Izz": 1.0,
+            "Iyy": 1.0,
+            "Iyz":0.0
+          }
+        }
+      ],
+      "joints": [
+        {
+          "name": "A_fixed_base",
+          "body_frame_pairs": [
+            [
+              "fixed",
+              "origin"
+            ],
+            [
+              "base",
+              "origin"
+            ]
+          ],
+          "type": "rigid",
+          "initial_displacement": {
+            "T": [0, 0, -2]
+          }
+        },
+        {
+          "name": "B_base_link_upper_1",
+          "body_frame_pairs": [
+            [
+              "base",
+              "base_1"
+            ],
+            [
+              "link_upper_1",
+              "origin"
+            ]
+          ],
+          "type": "Rz",
+          "initial_displacement": -0.18808393901926798,
+          "initial_velocity": 0.0
+        },
+        {
+          "name": "C_base_link_upper_2",
+          "body_frame_pairs": [
+            [
+              "base",
+              "base_2"
+            ],
+            [
+              "link_upper_2",
+              "origin"
+            ]
+          ],
+          "type": "Rz",
+          "initial_displacement": -0.18808393901926798,
+          "initial_velocity": 0.0
+        },
+        {
+          "name": "D_base_link_upper_3",
+          "body_frame_pairs": [
+            [
+              "base",
+              "base_3"
+            ],
+            [
+              "link_upper_3",
+              "origin"
+            ]
+          ],
+          "type": "Rz",
+          "initial_displacement": -0.18808393901926798,
+          "initial_velocity": 0.0
+        },
+        {
+          "name": "E_link_upper_1_link_lower_1",
+          "body_frame_pairs": [
+            [
+              "link_upper_1",
+              "distal_1"
+            ],
+            [
+              "link_lower_1",
+              "origin"
+            ]
+          ],
+          "type": "spherical",
+          "initial_displacement": {
+            "R": [
+              [-0.76420563,  0.64497268,  0.0],
+              [-0.64497268, -0.76420563,  0.0],
+              [ 0.0       ,  0.0       ,  1.0]
+            ]
+          }
+        },
+        {
+          "name": "F_link_upper_1_link_lower_2",
+          "body_frame_pairs": [
+            [
+              "link_upper_1",
+              "distal_2"
+            ],
+            [
+              "link_lower_2",
+              "origin"
+            ]
+          ],
+          "type": "spherical",
+          "initial_displacement": {
+            "R": [
+              [-0.76420564, -0.64497267, 0.0],
+              [0.64497267, -0.76420564, 0.0],
+              [0.0, 0.0, 1.0]
+            ]
+          }
+        },
+        {
+          "name": "G_link_upper_2_link_lower_3",
+          "body_frame_pairs": [
+            [
+              "link_upper_2",
+              "distal_1"
+            ],
+            [
+              "link_lower_3",
+              "origin"
+            ]
+          ],
+          "type": "spherical",
+          "initial_displacement": {
+            "R": [
+              [-0.76420564, 0.64497267, 0.0],
+              [-0.64497267, -0.76420564, 0.0],
+              [0.0, 0.0, 1.0]
+            ]
+          },
+          "initial_velocity": 0.0
+        },
+        {
+          "name": "H_link_upper_2_link_lower_4",
+          "body_frame_pairs": [
+            [
+              "link_upper_2",
+              "distal_2"
+            ],
+            [
+              "link_lower_4",
+              "origin"
+            ]
+          ],
+          "type": "spherical",
+          "initial_displacement": {
+            "R": [
+              [-0.76420564, -0.64497267, 0.0],
+              [0.64497267, -0.76420564, 0.0],
+              [0.0, 0.0, 1.0]
+              ]
+          },
+          "initial_velocity": 0.0
+        },
+        {
+          "name": "I_link_upper_3_link_lower_5",
+          "body_frame_pairs": [
+            [
+              "link_upper_3",
+              "distal_1"
+            ],
+            [
+              "link_lower_5",
+              "origin"
+            ]
+          ],
+          "type": "spherical",
+          "initial_displacement": {
+            "R": [
+              [-0.76420564, 0.64497267, 0.0],
+              [-0.64497267, -0.76420564, 0.0],
+              [0.0, 0.0, 1.0]
+            ]
+          },
+          "initial_velocity": 0.0
+        },
+        {
+          "name": "J_link_upper_3_link_lower_6",
+          "body_frame_pairs": [
+            [
+              "link_upper_3",
+              "distal_2"
+            ],
+            [
+              "link_lower_6",
+              "origin"
+            ]
+          ],
+          "type": "spherical",
+          "initial_displacement": {
+            "R": [
+              [-0.76420564, -0.64497267, 0.0],
+              [0.64497267, -0.76420564, 0.0],
+              [0.0, 0.0, 1.0]
+            ]
+          },
+          "initial_velocity": 0.0
+        },
+        {
+          "name": "K_link_lower_1_end_effector",
+          "active": true,
+          "body_frame_pairs": [
+            [
+              "link_lower_1",
+              "distal"
+            ],
+            [
+              "end_effector",
+              "distal_1"
+            ]
+          ],
+          "type": "spherical",
+          "initial_displacement": {
+            "R": [
+              [-0.6301333, -0.77648698, 0.0],
+              [0.77648698, -0.6301333, 0.0],
+              [0.0,  0.0,  1.0]
+            ]
+          },
+          "initial_velocity": 0.0
+        },
+        {
+          "name": "L_link_lower_2_end_effector",
+          "active": true,
+          "body_frame_pairs": [
+            [
+              "link_lower_2",
+              "distal"
+            ],
+            [
+              "end_effector",
+              "distal_2"
+            ]
+          ],
+          "type": "spherical",
+          "initial_displacement": {
+            "R": [
+              [-0.6301333, 0.77648698, 0.0],
+              [-0.77648698, -0.6301333, 0.0],
+              [0.0,  0.0,  1.0]
+            ]
+          },
+          "initial_velocity": 0.0
+        },
+        {
+          "name": "M_link_lower_3_end_effector",
+          "active": true,
+          "body_frame_pairs": [
+            [
+              "link_lower_3",
+              "distal"
+            ],
+            [
+              "end_effector",
+              "distal_3"
+            ]
+          ],
+          "type": "spherical",
+          "initial_displacement": {
+            "R": [
+              [-0.6301333, -0.77648698, 0.0],
+              [0.77648698, -0.6301333, 0.0],
+              [0.0,  0.0,  1.0]
+            ]
+          },
+          "initial_velocity": 0.0
+        },
+        {
+          "name": "N_link_lower_4_end_effector",
+          "active": true,
+          "body_frame_pairs": [
+            [
+              "link_lower_4",
+              "distal"
+            ],
+            [
+              "end_effector",
+              "distal_4"
+            ]
+          ],
+          "type": "spherical",
+          "initial_displacement": {
+            "R": [
+              [-0.6301333, 0.77648698, 0.0],
+              [-0.77648698, -0.6301333, 0.0],
+              [0.0,  0.0,  1.0]
+            ]
+          },
+          "initial_velocity": 0.0
+        },
+        {
+          "name": "O_link_lower_5_end_effector",
+          "active": true,
+          "body_frame_pairs": [
+            [
+              "link_lower_5",
+              "distal"
+            ],
+            [
+              "end_effector",
+              "distal_5"
+            ]
+          ],
+          "type": "spherical",
+          "initial_displacement": {
+            "R": [
+              [-0.6301333, -0.77648698, 0.0],
+              [0.77648698, -0.6301333, 0.0],
+              [0.0,  0.0,  1.0]
+            ]
+          },
+          "initial_velocity": 0.0
+        },
+        {
+          "name": "P_link_lower_6_end_effector",
+          "active": true,
+          "body_frame_pairs": [
+            [
+              "link_lower_6",
+              "distal"
+            ],
+            [
+              "end_effector",
+              "distal_6"
+            ]
+          ],
+          "type": "spherical",
+          "initial_displacement": {
+            "R": [
+              [-0.6301333, 0.77648698, 0.0],
+              [-0.77648698, -0.6301333, 0.0],
+              [0.0,  0.0,  1.0]
+            ]
+          },
+          "initial_velocity": 0.0
+        },
+        {
+          "name": "Q_fixed_end_effector",
+          "active": false,
+          "body_frame_pairs": [
+            [
+              "fixed",
+              "origin"
+            ],
+            [
+              "end_effector",
+              "origin"
+            ]
+          ],
+          "type": "float",
+          "initial_displacement": {
+            "T": [1, 0.77648698, 0.0]
+          },
+          "initial_velocity": 0.0
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+digraph g {
+	graph [bb="0,0,2763.4,492"];
+	node [fontname=monoid,
+		label="\N"
+	];
+	edge [dir=arrowtail,
+		fontname=monoid
+	];
+	"0"	 [height=0.5,
+		pos="1213.4,387"];
+	"1"	 [height=0.5,
+		pos="549.44,300"];
+	"0" -> "1" [key=B,
+	label="B (Rz)",
+	lp="1072.4,343.5",
+	pos="e,636.05,311.51 1156.7,379.7 1100.5,372.46 1012,361.02 935.44,351 836.98,338.12 724.41,323.23 646.35,312.87"];
+"2" [height=0.5,
+	pos="1213.4,300"];
+"0" -> "2" [key=D,
+label="D (Rz)",
+lp="1350.4,343.5",
+pos="e,1213.4,318 1213.4,368.97 1213.4,357.19 1213.4,341.56 1213.4,328.16"];
+"3" [height=0.5, pos="1888.4,300"];
+"0" -> "3" [key=C, label="C (Rz)"];
+
+"1" -> "5" [key=E, label="E (spherical)"];
+
+"1" -> "9" [key=F, label="F (spherical)"];
+
+"2" -> "4" [key=J, label="J (spherical)"];
+
+"2" -> "8" [key=I, label="I (spherical)"];
+
+"3" -> "6" [key=G, label="G (spherical)"];
+
+"3" -> "7" [key=H, label="H (spherical)"];
+
+"4" -> "10" [key=P, label="P (spherical)"];
+
+"5" -> "10" [key=K, label="K (spherical)"];
+
+"6" -> "10" [key=M, label="M (spherical)"];
+
+"7" -> "10" [key=N, label="N (spherical)"];
+
+"8" -> "10" [key=O, label="O (spherical)"];
+
+"9" -> "10" [key=L, label="L (spherical)"];
+
+"-1" -> "0" [key=A, label="A (rigid)"];
+}
