@@ -1,0 +1,340 @@
+{
+  "model_parameters": {
+    "version": "0.2",
+    "units": {
+      "angle": "radians",
+      "length": "meters",
+      "mass": "kilograms",
+      "time": "seconds"
+    },
+    "gravity": [
+      0.0,
+      0.0,
+      9.81
+    ],
+    "include_dir": [
+      "."
+    ],
+    "simulation": {
+      "integration_type": "ode113b",
+      "time_span": 100,
+      "time_step": 0.03,
+      "relative_error": 1e-09,
+      "absolute_error": 1e-09,
+      "contact_detection" : true
+    }
+  },
+  "fixed": {
+    "frames": [
+      {
+        "name": "overhead_1",
+        "T": [
+          0.0,
+          0.0,
+          -24.0
+        ],
+        "R": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            -1.0
+          ]
+        ]
+      },
+      {
+        "name": "overhead_2",
+        "T": [
+          36.0,
+          36.0,
+          -12.0
+        ],
+        "R": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            -1.0
+          ]
+        ]
+      }
+    ],
+    "lights": [
+      {
+        "name": "overhead_1",
+        "type": "point",
+        "parent": [
+          "fixed",
+          "overhead_1"
+        ],
+        "Ka": [
+          0.2,
+          0.2,
+          0.2
+        ],
+        "Kd": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "Ks": [
+          0.8,
+          0.8,
+          0.8
+        ]
+      },
+      {
+        "name": "overhead_2",
+        "type": "point",
+        "parent": [
+          "fixed",
+          "overhead_2"
+        ],
+        "Ka": [
+          0.2,
+          0.2,
+          0.2
+        ],
+        "Kd": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "Ks": [
+          0.8,
+          0.8,
+          0.8
+        ]
+      }
+    ]
+  },
+  "assemblies": [
+    {
+      "name": "collision_test",
+      "active": true,
+      "bodies": [
+        {
+          "name": "body0",
+          "definition": [
+            "stanford_bunny.obj"
+          ],
+          "collision_geometry": "ellipsoid",
+          "center_of_mass": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "mass": 1.0,
+          "moment_of_inertia": {
+            "Izx": 0.0,
+            "Ixx": 1.0,
+            "Ixy": 0.0,
+            "Izz": 1.0,
+            "Iyy": 1.0,
+            "Iyz": 0.0
+          }
+        },
+        {
+          "name": "body1",
+          "definition": [
+            "stanford_bunny.obj"
+          ],
+          "collision_geometry": "ellipsoid",
+          "center_of_mass": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "mass": 1.0,
+          "moment_of_inertia": {
+            "Izx": 0.0,
+            "Ixx": 1.0,
+            "Ixy": 0.0,
+            "Izz": 1.0,
+            "Iyy": 1.0,
+            "Iyz": 0.0
+          }
+        }
+        ,
+        {
+          "name": "body2",
+          "definition": [
+            "stanford_bunny.obj"
+          ],
+          "collision_geometry": "ellipsoid",
+          "center_of_mass": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "mass": 1.0,
+          "moment_of_inertia": {
+            "Izx": 0.0,
+            "Ixx": 1.0,
+            "Ixy": 0.0,
+            "Izz": 1.0,
+            "Iyy": 1.0,
+            "Iyz": 0.0
+          }
+        }      ],
+      "joints": [
+        {
+          "name": "A",
+          "body_frame_pairs": [
+            [
+              "fixed",
+              "origin"
+            ],
+            [
+              "body0",
+              "origin"
+            ]
+          ],
+          "type": "float",
+          "initial_displacement": {
+            "R": [
+              [
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "T": [
+              0.1,
+              0.0,
+              0.0
+            ]
+          },
+          "initial_velocity": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "B",
+          "body_frame_pairs": [
+            [
+              "fixed",
+              "origin"
+            ],
+            [
+              "body1",
+              "origin"
+            ]
+          ],
+          "type": "float",
+          "initial_displacement": {
+            "R": [
+              [
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "T": [
+             -0.1,
+             -0.0,
+             -0.0
+            ]
+          },
+          "initial_velocity": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "C",
+          "body_frame_pairs": [
+            [
+              "fixed",
+              "origin"
+            ],
+            [
+              "body2",
+              "origin"
+            ]
+          ],
+          "type": "float",
+          "initial_displacement": {
+            "R": [
+              [
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "T": [
+              0.0,
+              0.0,
+              0.13
+            ]
+          },
+          "initial_velocity": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ]
+    }
+  ]
+}
