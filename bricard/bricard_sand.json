@@ -13,7 +13,8 @@
       9.81
     ],
     "include_dir": [
-      "."
+      "models/terrain/",
+      "terrain/"
     ],
     "simulation": {
       "integration_type": "ode113b",
@@ -36,23 +37,25 @@
       },
       {
         "name": "overhead_2",
+        "T": [36.0, 36.0, -12.0],
+        "R": [[1.0, 0.0, 0.0],
+              [0.0, -1.0, 0.0],
+              [0.0, 0.0, -1.0]]
+      },
+      {
+        "name": "overhead_3",
         "T": [0.0, 24.0, -24.0],
         "R": [[1.0, 0.0, 0.0],
               [0.0, -0.70710678119, 0.70710678119],
               [0.0, -0.70710678119, -0.70710678119]]
       },
       {
-        "name": "overhead_3",
-        "T": [0.0, 1.0, 1.0]
-      },
-
-      {
         "name": "terrain",
         "T": [-32.0, -32.0, 2.5]
       },
       {
         "name": "attachment",
-        "T": [0, 0, -3.25]
+        "T": [0, 0, 0]
       },
       {
         "name": "distal",
@@ -62,34 +65,42 @@
         "T": [
           0,
           -1.5,
-          -3.25
+          0
         ]
       }
     ],
     "lights": [
       {
         "name": "overhead_1",
-        "type": "spot",
-        "parent": ["fixed", "overhead_1"],
+        "type": "point",
+        "parent": ["fixed", "overhead_3"],
         "Ka": [0.2, 0.2, 0.2],
         "Kd": [0.8, 0.8, 0.8],
         "Ks": [0.2, 0.2, 0.2]
       },
       {
         "name": "overhead_2",
-        "type": "spot",
-        "parent": ["fixed", "overhead_2"],
-        "Ka": [0.2, 0.2, 0.2],
-        "Kd": [0.6, 0.6, 0.6],
-        "Ks": [0.2, 0.2, 0.2]
-      },
-      {
-        "name": "overhead_3",
-        "type": "directional",
-        "parent": ["fixed", "overhead_3"],
+        "type": "point",
+        "parent": ["fixed", "overhead_1"],
         "Ka": [0.2, 0.2, 0.2],
         "Kd": [0.8, 0.8, 0.8],
         "Ks": [0.2, 0.2, 0.2]
+      }
+    ],
+    "terrain": [
+      {
+        "name": "sinxx+cosyy",
+        "elevation_map": "sinxx+cosyy.tiff",
+        "diffuse_map": ":/textures/cracked_sand.jpg",
+        "specular_map": ":/textures/cracked_sand_specular.jpg",
+        "normal_map": ":/textures/cracked_sand_normal.jpg",
+        "bump_map": ":/textures/cracked_sand_disp.jpg",
+        "property_map": null,
+        "parent": ["fixed", "terrain"],
+        "scale": [1.2, 1.2],
+        "texture_scale": [0.2, 0.2],
+        "coordinate_type": "sae",
+        "interpolation_type": "bicubic"
       }
     ]
   },
@@ -355,7 +366,7 @@
           "body_frame_pairs": [
             [
               "fixed",
-              "attachment"
+              "origin"
             ],
             [
               "6",
