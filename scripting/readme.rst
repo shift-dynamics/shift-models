@@ -1,7 +1,7 @@
-Python API
-==========
+Scripting model generation with Python
+======================================
 
-This directory contains an example of building a simple model programmatically using Python.
+This directory contains an example of building a *Shift* `JSON <http://shift-dynamics.io/file_format/file_format.html>`_ model programmatically using Python.
 
 The **shift.py** module contains *Shift* datastructures and utility functions. The module can be imported into another Python script as::
 
