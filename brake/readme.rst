@@ -6,7 +6,7 @@ Shift has tools to analyze each joint’s contribution to overall mechanism mobi
 
 .. image:: brake.png
 
-In the brake model, the cable and distance between brake pads are modeled as prismatic joints. The bicycle brake has three independent closed internal topological loops and one degree of freedom. Models are specifying a number of bodies and joints in a `JSON <http://shift-dynamics.io/file_format/file_format.html>`_ input file. Topological loops, if they exist, are discovered automatically by the software.
+In the brake model, the cable and distance between brake pads are modeled as prismatic joints. The bicycle brake has three independent closed internal topological loops and one degree of freedom. Models are created by specifying a number of bodies and joints in a `JSON <http://shift-dynamics.io/file_format/file_format.html>`_ input file. Topological loops, if they exist, are discovered automatically by the software.
 
 .. image:: brake_no_virtual_bodies.png
 
