@@ -1,7 +1,7 @@
 Abiflexx D4-1300
 ----------------
 
-This folder contains a model of the Abiflexx D4-1300 Delta robot, a robot commonly used for high speed pick-and-place operations. The model contains 3 revolute joints and 12 spherical joints (represented using quaternions) for a total of 39 degrees of freedom.  Due to the fact that the six lower links are connected with spherical joints at both ends, the model contains six idle degrees of freedom (i.e. lower link can rotate about its long axis without changing the position of the end-effector). The end-effector has three degrees of freedom.
+This folder contains a model of the Abiflexx D4-1300 Delta robot, a robot commonly used for high speed pick-and-place operations. The model contains 3 revolute joints and 12 spherical joints (represented using quaternions) for a total of 39 degrees of freedom.  
 
 .. image:: abiflexx_d4_1300.png
 
