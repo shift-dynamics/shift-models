@@ -7,7 +7,7 @@
       "mass": "kilograms",
       "time": "seconds"
     },
-    "gravity": [0.0, 0.0, 9.81],
+    "gravity": [0.0, 0.0, -9.81],
     "include_dir": [
       "models/slider_crank/",
       "examples/"
@@ -25,6 +25,11 @@
   "fixed":{
     "frames": [
       {
+        "name": "attachment",
+        "T":[0, 0, -3]
+      },
+
+      {
         "name": "1h_plus",
         "R":[[0.0, 0.0, -1.0],
              [0.0, 1.0, 0.0],
@@ -32,11 +37,24 @@
       },
       {
         "name": "overhead_1",
-        "T": [6.0, 6.0, -6.0]
+        "T": [0.0, 0.0, -48.0],
+        "R": [[1.0, 0.0, 0.0],
+              [0.0, -1.0, 0.0],
+              [0.0, 0.0, -1.0]]
       },
       {
         "name": "overhead_2",
-        "T": [-6.0, 6.0, -6.0]
+        "T": [48.0, 48.0, -48.0],
+        "R": [[1.0, 0.0, 0.0],
+              [0.0, -1.0, 0.0],
+              [0.0, 0.0, -1.0]]
+      },
+      {
+        "name": "overhead_3",
+        "T": [0.0, 48.0, -48.0],
+        "R": [[1.0, 0.0, 0.0],
+              [0.0, -0.70710678119, 0.70710678119],
+              [0.0, -0.70710678119, -0.70710678119]]
       }
     ],
     "lights": [
@@ -45,7 +63,7 @@
         "type": "point",
         "parent": ["fixed", "overhead_1"],
         "Ka": [0.4, 0.4, 0.4],
-        "Kd" : [0.6, 0.6, 0.6],
+        "Kd" : [0.8, 0.8, 0.8],
         "Ks" : [0.2, 0.2, 0.2]
       },
       {
@@ -137,7 +155,7 @@
         {
           "name": "A_fixed_crank",
           "body_frame_pairs":[
-            ["fixed", "origin"],
+            ["fixed", "attachment"],
             ["crank", "origin"]
           ],
           "type": "Rx",
@@ -147,7 +165,7 @@
         {
           "name": "B_fixed_piston",
           "body_frame_pairs": [
-            ["fixed", "origin"],
+            ["fixed", "attachment"],
             ["piston", "4h_plus"]
           ],
           "type": "Ty",
