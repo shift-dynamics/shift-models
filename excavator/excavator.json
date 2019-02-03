@@ -8,67 +8,148 @@
       "time": "seconds"
     },
     "gravity": [
-      0.0,
-      0.0,
+      0,
+      0,
       9.81
     ],
-    "include_dir": [
-      "models/excavator/",
-      "examples/"
+    "include_directories": [
+      "."
     ],
-    "simulation": {
-      "integration_type": "ode113b",
-      "time_span": 10,
-      "time_step": 0.03,
-      "relative_error": 1e-4,
-      "absolute_error": 1e-4,
-      "omega_n": 200,
-      "infinity_norm_multiplier": 2.0,
-      "out_file": "excavator.dat"
-    }
+    "solver": [
+      {
+        "type": "rnca",
+        "infinity_norm_multiplier": 2
+      }
+    ],
+    "integrator": [
+      {
+        "type": "ode113",
+        "time_span": 10,
+        "time_step": 0.03,
+        "relative_error": 0.0001,
+        "absolute_error": 0.0001,
+        "omega_n": 200
+      }
+    ],
+    "logger": [
+      {
+        "type": "csv",
+        "filename": "excavator.csv"
+      }
+    ]
   },
   "fixed": {
     "frames": [
       {
         "name": "overhead_1",
-        "T": [6.0, -6.0, -24.0],
-        "R": [[1.0, 0.0, 0.0],
-              [0.0, -1.0, 0.0],
-              [0.0, 0.0, -1.0]]
+        "T": [
+          6,
+          -6,
+          -24
+        ],
+        "R": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            -1,
+            0
+          ],
+          [
+            0,
+            0,
+            -1
+          ]
+        ]
       },
       {
         "name": "overhead_2",
-        "T": [-6.0, -6.0, -24.0],
-        "R": [[1.0, 0.0, 0.0],
-              [0.0, -1.0, 0.0],
-              [0.0, 0.0, -1.0]]
+        "T": [
+          -6,
+          -6,
+          -24
+        ],
+        "R": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            -1,
+            0
+          ],
+          [
+            0,
+            0,
+            -1
+          ]
+        ]
       }
     ],
     "lights": [
       {
         "name": "overhead_1",
         "type": "point",
-        "parent": ["fixed", "overhead_1"],
-        "Ka": [0.4, 0.4, 0.4],
-        "Kd": [0.6, 0.6, 0.6],
-        "Ks": [0.2, 0.2, 0.2]
+        "parent": [
+          "fixed",
+          "overhead_1"
+        ],
+        "Ka": [
+          0.4,
+          0.4,
+          0.4
+        ],
+        "Kd": [
+          0.6,
+          0.6,
+          0.6
+        ],
+        "Ks": [
+          0.2,
+          0.2,
+          0.2
+        ]
       },
       {
         "name": "overhead_2",
         "type": "point",
-        "parent": ["fixed", "overhead_2"],
-        "Ka": [0.6, 0.6, 0.6],
-        "Kd": [0.6, 0.6, 0.6],
-        "Ks": [0.2, 0.2, 0.2]
+        "parent": [
+          "fixed",
+          "overhead_2"
+        ],
+        "Ka": [
+          0.6,
+          0.6,
+          0.6
+        ],
+        "Kd": [
+          0.6,
+          0.6,
+          0.6
+        ],
+        "Ks": [
+          0.2,
+          0.2,
+          0.2
+        ]
       }
     ],
     "terrain": [
       {
+        "type": "basic",
         "name": "sinxx+cosyy",
         "definition": "sinxx+cosyy.tiff",
         "texture": "cracked_sand.jpg",
         "property_map": null,
-        "parent": ["fixed", "origin"],
+        "parent": [
+          "fixed",
+          "origin"
+        ],
         "x_scale": 0.2,
         "y_scale": 0.3,
         "coordinate_type": "sae",
@@ -83,9 +164,14 @@
       "bodies": [
         {
           "name": "undercarriage",
-          "definition": [
-            "undercarriage.obj",
-            "undercarriage.mtl"
+          "geometry": [
+            {
+              "type": "mesh",
+              "filename": [
+                "undercarriage.obj",
+                "undercarriage.mtl"
+              ]
+            }
           ],
           "frames": [
             {
@@ -102,27 +188,32 @@
             0.4,
             0.4
           ],
-          "mass": 2.0,
-          "moment_of_inertia": {
-            "Izx": 0.0,
-            "Ixx": 5.0,
-            "Ixy": 0.0,
-            "Izz": 5.0,
-            "Iyy": 5.0,
-            "Iyz": 0.0
+          "inertia": {
+            "mass": 2,
+            "Izx": 0,
+            "Ixx": 5,
+            "Ixy": 0,
+            "Izz": 5,
+            "Iyy": 5,
+            "Iyz": 0
           }
         },
         {
           "name": "cabin",
-          "definition": [
-            "cabin.obj",
-            "cabin.mtl"
+          "geometry": [
+            {
+              "type": "mesh",
+              "filename": [
+                "cabin.obj",
+                "cabin.mtl"
+              ]
+            }
           ],
           "frames": [
             {
               "name": "2h_plus",
               "T": [
-                0.0,
+                0,
                 0.06301,
                 0.99231
               ]
@@ -149,21 +240,26 @@
             0.4,
             0.4
           ],
-          "mass": 2.0,
-          "moment_of_inertia": {
-            "Izx": 0.0,
-            "Ixx": 5.0,
-            "Ixy": 0.0,
-            "Izz": 5.0,
-            "Iyy": 5.0,
-            "Iyz": 0.0
+          "inertia": {
+            "mass": 2,
+            "Izx": 0,
+            "Ixx": 5,
+            "Ixy": 0,
+            "Izz": 5,
+            "Iyy": 5,
+            "Iyz": 0
           }
         },
         {
           "name": "boom",
-          "definition": [
-            "boom.obj",
-            "boom.mtl"
+          "geometry": [
+            {
+              "type": "mesh",
+              "filename": [
+                "boom.obj",
+                "boom.mtl"
+              ]
+            }
           ],
           "frames": [
             {
@@ -204,21 +300,26 @@
             0.4,
             0.4
           ],
-          "mass": 2.0,
-          "moment_of_inertia": {
-            "Izx": 0.0,
-            "Ixx": 5.0,
-            "Ixy": 0.0,
-            "Izz": 5.0,
-            "Iyy": 5.0,
-            "Iyz": 0.0
+          "inertia": {
+            "mass": 2,
+            "Izx": 0,
+            "Ixx": 5,
+            "Ixy": 0,
+            "Izz": 5,
+            "Iyy": 5,
+            "Iyz": 0
           }
         },
         {
           "name": "stick",
-          "definition": [
-            "stick.obj",
-            "stick.mtl"
+          "geometry": [
+            {
+              "type": "mesh",
+              "filename": [
+                "stick.obj",
+                "stick.mtl"
+              ]
+            }
           ],
           "frames": [
             {
@@ -259,21 +360,26 @@
             0.4,
             0.4
           ],
-          "mass": 2.0,
-          "moment_of_inertia": {
-            "Izx": 0.0,
-            "Ixx": 5.0,
-            "Ixy": 0.0,
-            "Izz": 5.0,
-            "Iyy": 5.0,
-            "Iyz": 0.0
+          "inertia": {
+            "mass": 2,
+            "Izx": 0,
+            "Ixx": 5,
+            "Ixy": 0,
+            "Izz": 5,
+            "Iyy": 5,
+            "Iyz": 0
           }
         },
         {
           "name": "bucket",
-          "definition": [
-            "bucket.obj",
-            "bucket.mtl"
+          "geometry": [
+            {
+              "type": "mesh",
+              "filename": [
+                "bucket.obj",
+                "bucket.mtl"
+              ]
+            }
           ],
           "frames": [
             {
@@ -290,21 +396,26 @@
             0.4,
             0.4
           ],
-          "mass": 2.0,
-          "moment_of_inertia": {
-            "Izx": 0.0,
-            "Ixx": 5.0,
-            "Ixy": 0.0,
-            "Izz": 5.0,
-            "Iyy": 5.0,
-            "Iyz": 0.0
+          "inertia": {
+            "mass": 2,
+            "Izx": 0,
+            "Ixx": 5,
+            "Ixy": 0,
+            "Izz": 5,
+            "Iyy": 5,
+            "Iyz": 0
           }
         },
         {
           "name": "bucket_linkage_2",
-          "definition": [
-            "bucket_linkage_2.obj",
-            "bucket_linkage_2.mtl"
+          "geometry": [
+            {
+              "type": "mesh",
+              "filename": [
+                "bucket_linkage_2.obj",
+                "bucket_linkage_2.mtl"
+              ]
+            }
           ],
           "frames": [
             {
@@ -321,21 +432,26 @@
             0.4,
             0.4
           ],
-          "mass": 2.0,
-          "moment_of_inertia": {
-            "Izx": 0.0,
-            "Ixx": 5.0,
-            "Ixy": 0.0,
-            "Izz": 5.0,
-            "Iyy": 5.0,
-            "Iyz": 0.0
+          "inertia": {
+            "mass": 2,
+            "Izx": 0,
+            "Ixx": 5,
+            "Ixy": 0,
+            "Izz": 5,
+            "Iyy": 5,
+            "Iyz": 0
           }
         },
         {
           "name": "bucket_linkage_1",
-          "definition": [
-            "bucket_linkage_1.obj",
-            "bucket_linkage_1.mtl"
+          "geometry": [
+            {
+              "type": "mesh",
+              "filename": [
+                "bucket_linkage_1.obj",
+                "bucket_linkage_1.mtl"
+              ]
+            }
           ],
           "frames": [
             {
@@ -343,30 +459,35 @@
               "T": [
                 0,
                 0.55,
-                0.0
+                0
               ]
             }
           ],
           "center_of_mass": [
-            0.0,
+            0,
             0.2,
-            0.0
+            0
           ],
-          "mass": 2.0,
-          "moment_of_inertia": {
-            "Izx": 0.0,
-            "Ixx": 5.0,
-            "Ixy": 0.0,
-            "Izz": 5.0,
-            "Iyy": 5.0,
-            "Iyz": 0.0
+          "inertia": {
+            "mass": 2,
+            "Izx": 0,
+            "Ixx": 5,
+            "Ixy": 0,
+            "Izz": 5,
+            "Iyy": 5,
+            "Iyz": 0
           }
         },
         {
           "name": "boom_cylinder_1",
-          "definition": [
-            "cylinder.obj",
-            "cylinder.mtl"
+          "geometry": [
+            {
+              "type": "mesh",
+              "filename": [
+                "cylinder.obj",
+                "cylinder.mtl"
+              ]
+            }
           ],
           "frames": null,
           "center_of_mass": [
@@ -374,21 +495,26 @@
             0.4,
             0.4
           ],
-          "mass": 2.0,
-          "moment_of_inertia": {
-            "Izx": 0.0,
-            "Ixx": 5.0,
-            "Ixy": 0.0,
-            "Izz": 5.0,
-            "Iyy": 5.0,
-            "Iyz": 0.0
+          "inertia": {
+            "mass": 2,
+            "Izx": 0,
+            "Ixx": 5,
+            "Ixy": 0,
+            "Izz": 5,
+            "Iyy": 5,
+            "Iyz": 0
           }
         },
         {
           "name": "boom_cylinder_2",
-          "definition": [
-            "cylinder.obj",
-            "cylinder.mtl"
+          "geometry": [
+            {
+              "type": "mesh",
+              "filename": [
+                "cylinder.obj",
+                "cylinder.mtl"
+              ]
+            }
           ],
           "frames": null,
           "center_of_mass": [
@@ -396,21 +522,26 @@
             0.4,
             0.4
           ],
-          "mass": 2.0,
-          "moment_of_inertia": {
-            "Izx": 0.0,
-            "Ixx": 5.0,
-            "Ixy": 0.0,
-            "Izz": 5.0,
-            "Iyy": 5.0,
-            "Iyz": 0.0
+          "inertia": {
+            "mass": 2,
+            "Izx": 0,
+            "Ixx": 5,
+            "Ixy": 0,
+            "Izz": 5,
+            "Iyy": 5,
+            "Iyz": 0
           }
         },
         {
           "name": "boom_rod_1",
-          "definition": [
-            "rod.obj",
-            "rod.mtl"
+          "geometry": [
+            {
+              "type": "mesh",
+              "filename": [
+                "rod.obj",
+                "rod.mtl"
+              ]
+            }
           ],
           "frames": null,
           "center_of_mass": [
@@ -418,21 +549,26 @@
             0.4,
             0.4
           ],
-          "mass": 2.0,
-          "moment_of_inertia": {
-            "Izx": 0.0,
-            "Ixx": 5.0,
-            "Ixy": 0.0,
-            "Izz": 5.0,
-            "Iyy": 5.0,
-            "Iyz": 0.0
+          "inertia": {
+            "mass": 2,
+            "Izx": 0,
+            "Ixx": 5,
+            "Ixy": 0,
+            "Izz": 5,
+            "Iyy": 5,
+            "Iyz": 0
           }
         },
         {
           "name": "boom_rod_2",
-          "definition": [
-            "rod.obj",
-            "rod.mtl"
+          "geometry": [
+            {
+              "type": "mesh",
+              "filename": [
+                "rod.obj",
+                "rod.mtl"
+              ]
+            }
           ],
           "frames": null,
           "center_of_mass": [
@@ -440,21 +576,26 @@
             0.4,
             0.4
           ],
-          "mass": 2.0,
-          "moment_of_inertia": {
-            "Izx": 0.0,
-            "Ixx": 5.0,
-            "Ixy": 0.0,
-            "Izz": 5.0,
-            "Iyy": 5.0,
-            "Iyz": 0.0
+          "inertia": {
+            "mass": 2,
+            "Izx": 0,
+            "Ixx": 5,
+            "Ixy": 0,
+            "Izz": 5,
+            "Iyy": 5,
+            "Iyz": 0
           }
         },
         {
           "name": "stick_cylinder",
-          "definition": [
-            "cylinder.obj",
-            "cylinder.mtl"
+          "geometry": [
+            {
+              "type": "mesh",
+              "filename": [
+                "cylinder.obj",
+                "cylinder.mtl"
+              ]
+            }
           ],
           "frames": null,
           "center_of_mass": [
@@ -462,21 +603,26 @@
             0.4,
             0.4
           ],
-          "mass": 2.0,
-          "moment_of_inertia": {
-            "Izx": 0.0,
-            "Ixx": 5.0,
-            "Ixy": 0.0,
-            "Izz": 5.0,
-            "Iyy": 5.0,
-            "Iyz": 0.0
+          "inertia": {
+            "mass": 2,
+            "Izx": 0,
+            "Ixx": 5,
+            "Ixy": 0,
+            "Izz": 5,
+            "Iyy": 5,
+            "Iyz": 0
           }
         },
         {
           "name": "stick_rod",
-          "definition": [
-            "rod.obj",
-            "rod.mtl"
+          "geometry": [
+            {
+              "type": "mesh",
+              "filename": [
+                "rod.obj",
+                "rod.mtl"
+              ]
+            }
           ],
           "frames": null,
           "center_of_mass": [
@@ -484,21 +630,26 @@
             0.4,
             0.4
           ],
-          "mass": 2.0,
-          "moment_of_inertia": {
-            "Izx": 0.0,
-            "Ixx": 5.0,
-            "Ixy": 0.0,
-            "Izz": 5.0,
-            "Iyy": 5.0,
-            "Iyz": 0.0
+          "inertia": {
+            "mass": 2,
+            "Izx": 0,
+            "Ixx": 5,
+            "Ixy": 0,
+            "Izz": 5,
+            "Iyy": 5,
+            "Iyz": 0
           }
         },
         {
           "name": "bucket_cylinder",
-          "definition": [
-            "cylinder.obj",
-            "cylinder.mtl"
+          "geometry": [
+            {
+              "type": "mesh",
+              "filename": [
+                "cylinder.obj",
+                "cylinder.mtl"
+              ]
+            }
           ],
           "frames": null,
           "center_of_mass": [
@@ -506,21 +657,26 @@
             0.4,
             0.4
           ],
-          "mass": 2.0,
-          "moment_of_inertia": {
-            "Izx": 0.0,
-            "Ixx": 5.0,
-            "Ixy": 0.0,
-            "Izz": 5.0,
-            "Iyy": 5.0,
-            "Iyz": 0.0
+          "inertia": {
+            "mass": 2,
+            "Izx": 0,
+            "Ixx": 5,
+            "Ixy": 0,
+            "Izz": 5,
+            "Iyy": 5,
+            "Iyz": 0
           }
         },
         {
           "name": "bucket_rod",
-          "definition": [
-            "rod.obj",
-            "rod.mtl"
+          "geometry": [
+            {
+              "type": "mesh",
+              "filename": [
+                "rod.obj",
+                "rod.mtl"
+              ]
+            }
           ],
           "frames": null,
           "center_of_mass": [
@@ -528,47 +684,49 @@
             0.4,
             0.4
           ],
-          "mass": 2.0,
-          "moment_of_inertia": {
-            "Izx": 0.0,
-            "Ixx": 5.0,
-            "Ixy": 0.0,
-            "Izz": 5.0,
-            "Iyy": 5.0,
-            "Iyz": 0.0
+          "inertia": {
+            "mass": 2,
+            "Izx": 0,
+            "Ixx": 5,
+            "Ixy": 0,
+            "Izz": 5,
+            "Iyy": 5,
+            "Iyz": 0
           }
         }
       ],
       "joints": [
         {
           "name": "A_fixed_to_undercarriage",
-          "body_frame_pairs": [
+          "parent": [
             [
-              "fixed",
-              "origin"
+              "fixed"
             ],
+            "origin"
+          ],
+          "child": [
             [
-              "undercarriage",
-              "origin"
-            ]
+              "undercarriage"
+            ],
+            "origin"
           ],
           "type": "rigid",
           "initial_displacement": {
             "R": [
               [
-                1.0,
-                0.0,
-                0.0
+                1,
+                0,
+                0
               ],
               [
-                0.0,
-                -1.0,
-                0.0
+                0,
+                -1,
+                0
               ],
               [
-                0.0,
-                0.0,
-                -1.0
+                0,
+                0,
+                -1
               ]
             ],
             "T": [
@@ -576,264 +734,310 @@
               0,
               0
             ]
-          },
-          "initial_velocity": 0.0
+          }
         },
         {
           "name": "B_undercarriage_to_cabin",
-          "body_frame_pairs": [
+          "parent": [
             [
-              "undercarriage",
-              "1h_plus"
+              "undercarriage"
             ],
-            [
-              "cabin",
-              "origin"
-            ]
+            "1h_plus"
           ],
-          "type": "Rz",
-          "initial_displacement": 0.0,
+          "child": [
+            [
+              "cabin"
+            ],
+            "origin"
+          ],
+          "type": "revolute",
+          "axis": "z",
+          "initial_displacement": 0,
           "initial_velocity": 0.2
         },
         {
           "name": "C_cabin_to_boom",
-          "body_frame_pairs": [
+          "parent": [
             [
-              "cabin",
-              "2h_plus"
+              "cabin"
             ],
-            [
-              "boom",
-              "origin"
-            ]
+            "2h_plus"
           ],
-          "type": "Rx",
+          "child": [
+            [
+              "boom"
+            ],
+            "origin"
+          ],
+          "type": "revolute",
+          "axis": "x",
           "initial_displacement": -0.3,
-          "initial_velocity": 0.0
+          "initial_velocity": 0
         },
         {
           "name": "D_boom_to_stick",
-          "body_frame_pairs": [
+          "parent": [
             [
-              "boom",
-              "3h_plus1"
+              "boom"
             ],
-            [
-              "stick",
-              "origin"
-            ]
+            "3h_plus1"
           ],
-          "type": "Rx",
+          "child": [
+            [
+              "stick"
+            ],
+            "origin"
+          ],
+          "type": "revolute",
+          "axis": "x",
           "initial_displacement": 0.1,
-          "initial_velocity": 0.0
+          "initial_velocity": 0
         },
         {
           "name": "E_stick_to_bucket",
-          "body_frame_pairs": [
+          "parent": [
             [
-              "stick",
-              "4h_plus"
+              "stick"
             ],
-            [
-              "bucket",
-              "origin"
-            ]
+            "4h_plus"
           ],
-          "type": "Rx",
-          "initial_displacement": 1.0,
-          "initial_velocity": 0.0
+          "child": [
+            [
+              "bucket"
+            ],
+            "origin"
+          ],
+          "type": "revolute",
+          "axis": "x",
+          "initial_displacement": 1,
+          "initial_velocity": 0
         },
         {
           "name": "F_stick_to_bucket_linkage_2",
-          "body_frame_pairs": [
+          "parent": [
             [
-              "stick",
-              "4h_plus2"
+              "stick"
             ],
-            [
-              "bucket_linkage_2",
-              "6h_plus"
-            ]
+            "4h_plus2"
           ],
-          "type": "Rx",
+          "child": [
+            [
+              "bucket_linkage_2"
+            ],
+            "6h_plus"
+          ],
+          "type": "revolute",
+          "axis": "x",
           "initial_displacement": 0.8,
-          "initial_velocity": 0.0
+          "initial_velocity": 0
         },
         {
           "name": "G_bucket_to_bucket_linkage_1",
-          "body_frame_pairs": [
+          "parent": [
             [
-              "bucket",
-              "5h_plus"
+              "bucket"
             ],
-            [
-              "bucket_linkage_1",
-              "origin"
-            ]
+            "5h_plus"
           ],
-          "type": "Rx",
+          "child": [
+            [
+              "bucket_linkage_1"
+            ],
+            "origin"
+          ],
+          "type": "revolute",
+          "axis": "x",
           "initial_displacement": 0.1,
-          "initial_velocity": 0.0
+          "initial_velocity": 0
         },
         {
           "name": "H_cabin_to_boom_cylinder_1",
-          "body_frame_pairs": [
+          "parent": [
             [
-              "cabin",
-              "2h_plus2"
+              "cabin"
             ],
-            [
-              "boom_cylinder_1",
-              "origin"
-            ]
+            "2h_plus2"
           ],
-          "type": "Rx",
+          "child": [
+            [
+              "boom_cylinder_1"
+            ],
+            "origin"
+          ],
+          "type": "revolute",
+          "axis": "x",
           "initial_displacement": 2.18,
-          "initial_velocity": 0.0
+          "initial_velocity": 0
         },
         {
           "name": "I_cabin_to_boom_cylinder_2",
-          "body_frame_pairs": [
+          "parent": [
             [
-              "cabin",
-              "2h_plus3"
+              "cabin"
             ],
-            [
-              "boom_cylinder_2",
-              "origin"
-            ]
+            "2h_plus3"
           ],
-          "type": "Rx",
+          "child": [
+            [
+              "boom_cylinder_2"
+            ],
+            "origin"
+          ],
+          "type": "revolute",
+          "axis": "x",
           "initial_displacement": 2.18,
-          "initial_velocity": 0.0
+          "initial_velocity": 0
         },
         {
           "name": "J_boom_to_stick_cylinder",
-          "body_frame_pairs": [
+          "parent": [
             [
-              "boom",
-              "3h_plus2"
+              "boom"
             ],
-            [
-              "stick_cylinder",
-              "origin"
-            ]
+            "3h_plus2"
           ],
-          "type": "Rx",
+          "child": [
+            [
+              "stick_cylinder"
+            ],
+            "origin"
+          ],
+          "type": "x",
           "initial_displacement": 3.4,
-          "initial_velocity": 0.0
+          "initial_velocity": 0
         },
         {
           "name": "K_stick_to_bucket_cylinder",
-          "body_frame_pairs": [
+          "parent": [
             [
-              "stick",
-              "4h_plus3"
+              "stick"
             ],
-            [
-              "bucket_cylinder",
-              "origin"
-            ]
+            "4h_plus3"
           ],
-          "type": "Rx",
+          "child": [
+            [
+              "bucket_cylinder"
+            ],
+            "origin"
+          ],
+          "type": "revolute",
+          "axis": "x",
           "initial_displacement": 3.7,
-          "initial_velocity": 0.0
+          "initial_velocity": 0
         },
         {
           "name": "L_boom_cylinder_1_to_boom_rod_1",
-          "body_frame_pairs": [
+          "parent": [
             [
-              "boom_cylinder_1",
-              "origin"
+              "boom_cylinder_1"
             ],
-            [
-              "boom_rod_1",
-              "origin"
-            ]
+            "origin"
           ],
-          "type": "Ty",
+          "child": [
+            [
+              "boom_rod_1"
+            ],
+            "origin"
+          ],
+          "type": "prismatic",
+          "axis": "y",
           "initial_displacement": 2.65,
-          "initial_velocity": 0.0
+          "initial_velocity": 0
         },
         {
           "name": "M_boom_cylinder_2_to_boom_rod_2",
-          "body_frame_pairs": [
+          "parent": [
             [
-              "boom_cylinder_2",
-              "origin"
+              "boom_cylinder_2"
             ],
-            [
-              "boom_rod_2",
-              "origin"
-            ]
+            "origin"
           ],
-          "type": "Ty",
+          "child": [
+            [
+              "boom_rod_2"
+            ],
+            "origin"
+          ],
+          "type": "prismatic",
+          "axis": "y",
           "initial_displacement": 2.65,
-          "initial_velocity": 0.0
+          "initial_velocity": 0
         },
         {
           "name": "N_stick_cylinder_to_stick_rod",
-          "body_frame_pairs": [
+          "parent": [
             [
-              "stick_cylinder",
-              "origin"
+              "stick_cylinder"
             ],
-            [
-              "stick_rod",
-              "origin"
-            ]
+            "origin"
           ],
-          "type": "Ty",
+          "child": [
+            [
+              "stick_rod"
+            ],
+            "origin"
+          ],
+          "type": "prismatic",
+          "axis": "y",
           "initial_displacement": 2.3,
-          "initial_velocity": 0.0
+          "initial_velocity": 0
         },
         {
           "name": "O_bucket_cylinder_to_bucket_rod",
-          "body_frame_pairs": [
+          "parent": [
             [
-              "bucket_cylinder",
-              "origin"
+              "bucket_cylinder"
             ],
-            [
-              "bucket_rod",
-              "origin"
-            ]
+            "origin"
           ],
-          "type": "Ty",
+          "child": [
+            [
+              "bucket_rod"
+            ],
+            "origin"
+          ],
+          "type": "prismatic",
+          "axis": "y",
           "initial_displacement": 2.4,
-          "initial_velocity": 0.0
+          "initial_velocity": 0
         },
         {
           "name": "P_boom_rod_1_to_boom",
-          "body_frame_pairs": [
+          "parent": [
             [
-              "boom_rod_1",
-              "origin"
+              "boom_rod_1"
             ],
-            [
-              "boom",
-              "3h_minus1"
-            ]
+            "origin"
           ],
-          "type": "Rx",
+          "child": [
+            [
+              "boom"
+            ],
+            "3h_minus1"
+          ],
+          "type": "revolute",
+          "aixs": "x",
           "initial_displacement": 3.8,
-          "initial_velocity": 0.0
+          "initial_velocity": 0
         },
         {
           "name": "Q_boom_rod_2_to_boom",
-          "body_frame_pairs": [
+          "parent": [
             [
-              "boom_rod_2",
-              "origin"
+              "boom_rod_2"
             ],
-            [
-              "boom",
-              "3h_minus2"
-            ]
+            "origin"
           ],
-          "type": "Rx",
+          "child": [
+            [
+              "boom"
+            ],
+            "3h_minus2"
+          ],
+          "type": "revolute",
+          "axis": "x",
           "initial_displacement": 3.8,
-          "initial_velocity": 0.0
+          "initial_velocity": 0
         },
         {
           "name": "R_stick_rod_to_stick",
@@ -847,41 +1051,47 @@
               "4h_minus"
             ]
           ],
-          "type": "Rx",
-          "initial_displacement": 3.0,
-          "initial_velocity": 0.0
+          "axis": "x",
+          "initial_displacement": 3,
+          "initial_velocity": 0
         },
         {
           "name": "S_bucket_rod_to_bucket_linkage_1",
-          "body_frame_pairs": [
+          "parent": [
             [
-              "bucket_rod",
-              "origin"
+              "bucket_rod"
             ],
-            [
-              "bucket_linkage_1",
-              "7h_plus"
-            ]
+            "origin"
           ],
-          "type": "Rx",
+          "child": [
+            [
+              "bucket_linkage_1"
+            ],
+            "7h_plus"
+          ],
+          "type": "revolute",
+          "axis": "x",
           "initial_displacement": -2.6,
-          "initial_velocity": 0.0
+          "initial_velocity": 0
         },
         {
           "name": "T_bucket_linkage_1_to_bucket_linkage_2",
-          "body_frame_pairs": [
+          "parent": [
             [
-              "bucket_linkage_1",
-              "7h_plus"
+              "bucket_linkage_1"
             ],
-            [
-              "bucket_linkage_2",
-              "origin"
-            ]
+            "7h_plus"
           ],
-          "type": "Rx",
+          "child": [
+            [
+              "bucket_linkage_2"
+            ],
+            "origin"
+          ],
+          "type": "revolute",
+          "axis": "x",
           "initial_displacement": -0.1,
-          "initial_velocity": 0.0
+          "initial_velocity": 0
         }
       ]
     }

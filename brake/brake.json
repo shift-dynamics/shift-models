@@ -86,8 +86,8 @@
             0.0,
             0.0
           ],
-          "mass": 2.0,
-          "moment_of_inertia": {
+          "inertia": {
+            "mass": 2.0,
             "Izx": 0.0,
             "Ixx": 1.0,
             "Ixy": 0.0,
@@ -133,8 +133,8 @@
             0.0,
             0.0
           ],
-          "mass": 2.0,
           "moment_of_inertia": {
+            "mass": 2.0,
             "Izx": 0.0,
             "Ixx": 1.0,
             "Ixy": 0.0,

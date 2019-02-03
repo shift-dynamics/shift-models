@@ -12,29 +12,36 @@
       0.0,
       9.81
     ],
-    "include_dir": [
-<<<<<<< HEAD
-      "models/terrain/",
-      "terrain/"
-=======
+    "include_directories": [
       "."
->>>>>>> 268453a1c57ba1911bffac462fa8090811948daa
     ],
-    "simulation": {
-      "integration_type": "ode113b",
-      "time_span": 10,
-      "time_step": 0.03,
-      "relative_error": 1e-11,
-      "absolute_error": 1e-11,
-      "omega_n": 80,
-      "infinity_norm_multiplier": 1.5
-    }
+    "solver": [
+      {
+        "type": "rnca",
+        "infinity_norm_multiplier": 1.5
+      }
+    ],
+    "integrator": [
+      {
+        "type": "ode113",
+        "time_span": 10,
+        "time_step": 0.03,
+        "relative_error": 1e-11,
+        "absolute_error": 1e-11,
+        "omega_n": 80
+      }
+    ],
+    "logger": [
+      {
+        "type": "csv",
+        "filename": "bricard.csv"
+      }
+    ]
   },
   "fixed": {
     "frames": [
       {
         "name": "overhead_1",
-
         "T": [0.0, 0.0, -48.0],
         "R": [[1.0, 0.0, 0.0],
               [0.0, -1.0, 0.0],
@@ -105,17 +112,19 @@
       "bodies": [
         {
           "name": "1",
-          "definition": [
-            "link1.obj",
-            "link1.mtl"
+          "geometry": [
+            {
+              "type": "mesh",
+              "filename": ["link1.obj", "link1.mtl"]
+            }
           ],
           "center_of_mass": [
             0.0,
             -0.75,
             0.0
           ],
-          "mass": 1.0,
-          "moment_of_inertia": {
+          "inertia": {
+            "mass": 1.0,
             "Izx": 0.0,
             "Ixx": 0.1875,
             "Ixy": 0.0,
@@ -126,9 +135,11 @@
         },
         {
           "name": "2",
-          "definition": [
-            "link1.obj",
-            "link1.mtl"
+          "geometry": [
+            {
+              "type": "mesh",
+              "filename": ["link1.obj", "link1.mtl"]
+            }
           ],
           "frames": [
             {
@@ -148,8 +159,8 @@
             -0.75,
             0.0
           ],
-          "mass": 1.0,
-          "moment_of_inertia": {
+          "inertia": {
+            "mass": 1.0,
             "Izx": 0.0,
             "Ixx": 0.1875,
             "Ixy": 0.0,
@@ -160,9 +171,11 @@
         },
         {
           "name": "3",
-          "definition": [
-            "link1.obj",
-            "link1.mtl"
+          "geometry": [
+            {
+              "type": "mesh",
+              "filename": ["link1.obj", "link1.mtl"]
+            }
           ],
           "frames": [
             {
@@ -182,8 +195,8 @@
             -0.75,
             0.0
           ],
-          "mass": 1.0,
-          "moment_of_inertia": {
+          "inertia": {
+            "mass": 1.0,
             "Izx": 0.0,
             "Ixx": 0.1875,
             "Ixy": 0.0,
@@ -194,9 +207,11 @@
         },
         {
           "name": "4",
-          "definition": [
-            "link1.obj",
-            "link1.mtl"
+          "geometry": [
+            {
+              "type": "mesh",
+              "filename": ["link1.obj", "link1.mtl"]
+            }
           ],
           "frames": [
             {
@@ -216,8 +231,8 @@
             -0.75,
             0.0
           ],
-          "mass": 1.0,
-          "moment_of_inertia": {
+          "inertia": {
+            "mass": 1.0,
             "Izx": 0.0,
             "Ixx": 0.1875,
             "Ixy": 0.0,
@@ -228,9 +243,11 @@
         },
         {
           "name": "5",
-          "definition": [
-            "link1.obj",
-            "link1.mtl"
+          "geometry": [
+            {
+              "type": "mesh",
+              "filename": ["link1.obj", "link1.mtl"]
+            }
           ],
           "frames": [
             {
@@ -250,8 +267,8 @@
             -0.75,
             0.0
           ],
-          "mass": 1.0,
-          "moment_of_inertia": {
+          "inertia": {
+            "mass": 1.0,
             "Izx": 0.0,
             "Ixx": 0.1875,
             "Ixy": 0.0,
@@ -262,9 +279,11 @@
         },
         {
           "name": "6",
-          "definition": [
-            "link2.obj",
-            "link2.mtl"
+          "geometry": [
+            {
+              "type": "mesh",
+              "filename": ["link1.obj", "link1.mtl"]
+            }
           ],
           "frames": [
             {
@@ -284,8 +303,8 @@
             -0.75,
             0.0
           ],
-          "mass": 1.0,
-          "moment_of_inertia": {
+          "inertia": {
+            "mass": 1.0,
             "Izx": 0.0,
             "Ixx": 0.1875,
             "Ixy": 0.0,
@@ -298,97 +317,91 @@
       "joints": [
         {
           "name": "A",
-          "body_frame_pairs": [
-            [
-              "2",
-              "origin"
-            ],
-            [
-              "fixed",
-              "distal"
-            ]
+          "parent": [
+            ["2"],
+            "origin"
           ],
-          "type": "Rx",
+          "child": [
+            ["fixed"],
+            "distal"
+          ],
+          "type": "revolute",
+          "axis": "x",
           "initial_displacement": 0.776,
           "initial_velocity": 0.02623322119
         },
         {
           "name": "B",
-          "body_frame_pairs": [
-            [
-              "2",
-              "2_distal"
-            ],
-            [
-              "3",
-              "origin"
-            ]
+          "parent": [
+            ["2"],
+            "2_distal"
           ],
-          "type": "Rx",
+          "child": [
+            ["3"],
+            "origin"
+          ],
+          "type": "revolute",
+          "axis": "x",
           "initial_displacement": -2.0,
           "initial_velocity": 0.1
         },
         {
           "name": "C",
-          "body_frame_pairs": [
-            [
-              "3",
-              "3_distal"
-            ],
-            [
-              "4",
-              "origin"
-            ]
+          "parent": [
+            ["3"],
+            "3_distal"
           ],
-          "type": "Rx",
+          "child": [
+            ["4"],
+            "origin"
+          ],
+          "type": "revolute",
+          "axis": "x",
           "initial_displacement": 0.776,
           "initial_velocity": 0.02623322119
         },
         {
           "name": "D",
-          "body_frame_pairs": [
-            [
-              "5",
-              "origin"
-            ],
-            [
-              "4",
-              "4_distal"
-            ]
+          "parent": [
+            ["5"],
+            "origin"
           ],
-          "type": "Rx",
+          "child": [
+            ["4"],
+            "4_distal"
+          ],
+          "type": "revolute",
+          "axis": "x",
           "initial_displacement": -2.0,
           "initial_velocity": 0.1
         },
         {
           "name": "E",
-          "body_frame_pairs": [
-            [
-              "5",
-              "5_distal"
-            ],
-            [
-              "6",
-              "origin"
-            ]
+          "parent": [
+            ["5"],
+            "5_distal"
           ],
-          "type": "Rx",
+          "child": [
+            ["6"],
+            "origin"
+          ],
+          "type": "revolute",
+          "axis": "x",
           "initial_displacement": 0.776,
           "initial_velocity": 0.02623322119
         },
         {
           "name": "F",
-          "body_frame_pairs": [
-            [
-              "fixed",
-              "attachment"
-            ],
-            [
-              "6",
-              "6_distal"
-            ]
+          "parent": [
+            ["fixed"],
+            "attachment"
           ],
-          "type": "Rx",
+          "child": [
+            ["6"],
+            "6_distal"
+          ],
+          "type": "revolute",
+          "axis": "x",
           "initial_displacement": -2.0,
           "initial_velocity": 0.1
         }
