@@ -902,7 +902,8 @@
             ],
             "origin"
           ],
-          "type": "x",
+          "type": "revolute",
+          "axis": "x",
           "initial_displacement": 3.4,
           "initial_velocity": 0
         },
@@ -1041,16 +1042,19 @@
         },
         {
           "name": "R_stick_rod_to_stick",
-          "body_frame_pairs": [
+          "parent": [
             [
-              "stick_rod",
-              "origin"
+              "stick_rod"
             ],
-            [
-              "stick",
-              "4h_minus"
-            ]
+            "origin"
           ],
+          "child": [
+            [
+              "stick"
+            ],
+            "4h_minus"
+          ],
+          "type": "revolute",
           "axis": "x",
           "initial_displacement": 3,
           "initial_velocity": 0
