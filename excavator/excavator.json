@@ -751,7 +751,7 @@
             "origin"
           ],
           "type": "revolute",
-          "axis": "z",
+          "axis": [0, 0, 1],
           "initial_displacement": 0,
           "initial_velocity": 0.2
         },
@@ -770,7 +770,7 @@
             "origin"
           ],
           "type": "revolute",
-          "axis": "x",
+          "axis": [1, 0, 0],
           "initial_displacement": -0.3,
           "initial_velocity": 0
         },
@@ -789,7 +789,7 @@
             "origin"
           ],
           "type": "revolute",
-          "axis": "x",
+          "axis": [1, 0, 0],
           "initial_displacement": 0.1,
           "initial_velocity": 0
         },
@@ -808,7 +808,7 @@
             "origin"
           ],
           "type": "revolute",
-          "axis": "x",
+          "axis": [1, 0, 0],
           "initial_displacement": 1,
           "initial_velocity": 0
         },
@@ -827,7 +827,7 @@
             "6h_plus"
           ],
           "type": "revolute",
-          "axis": "x",
+          "axis": [1, 0, 0],
           "initial_displacement": 0.8,
           "initial_velocity": 0
         },
@@ -846,7 +846,7 @@
             "origin"
           ],
           "type": "revolute",
-          "axis": "x",
+          "axis": [1, 0, 0],
           "initial_displacement": 0.1,
           "initial_velocity": 0
         },
@@ -865,7 +865,7 @@
             "origin"
           ],
           "type": "revolute",
-          "axis": "x",
+          "axis": [1, 0, 0],
           "initial_displacement": 2.18,
           "initial_velocity": 0
         },
@@ -884,7 +884,7 @@
             "origin"
           ],
           "type": "revolute",
-          "axis": "x",
+          "axis": [1, 0, 0],
           "initial_displacement": 2.18,
           "initial_velocity": 0
         },
@@ -903,7 +903,7 @@
             "origin"
           ],
           "type": "revolute",
-          "axis": "x",
+          "axis": [1, 0, 0],
           "initial_displacement": 3.4,
           "initial_velocity": 0
         },
@@ -922,7 +922,7 @@
             "origin"
           ],
           "type": "revolute",
-          "axis": "x",
+          "axis": [1, 0, 0],
           "initial_displacement": 3.7,
           "initial_velocity": 0
         },
@@ -941,7 +941,7 @@
             "origin"
           ],
           "type": "prismatic",
-          "axis": "y",
+          "axis": [0, 1, 0],
           "initial_displacement": 2.65,
           "initial_velocity": 0
         },
@@ -960,7 +960,7 @@
             "origin"
           ],
           "type": "prismatic",
-          "axis": "y",
+          "axis": [0, 1, 0],
           "initial_displacement": 2.65,
           "initial_velocity": 0
         },
@@ -979,7 +979,7 @@
             "origin"
           ],
           "type": "prismatic",
-          "axis": "y",
+          "axis": [0, 1, 0],
           "initial_displacement": 2.3,
           "initial_velocity": 0
         },
@@ -998,7 +998,7 @@
             "origin"
           ],
           "type": "prismatic",
-          "axis": "y",
+          "axis": [0, 1, 0],
           "initial_displacement": 2.4,
           "initial_velocity": 0
         },
@@ -1017,7 +1017,7 @@
             "3h_minus1"
           ],
           "type": "revolute",
-          "aixs": "x",
+          "aixs": [1, 0, 0],
           "initial_displacement": 3.8,
           "initial_velocity": 0
         },
@@ -1036,7 +1036,7 @@
             "3h_minus2"
           ],
           "type": "revolute",
-          "axis": "x",
+          "axis": [1, 0, 0],
           "initial_displacement": 3.8,
           "initial_velocity": 0
         },
@@ -1055,7 +1055,7 @@
             "4h_minus"
           ],
           "type": "revolute",
-          "axis": "x",
+          "axis": [1, 0, 0],
           "initial_displacement": 3,
           "initial_velocity": 0
         },
@@ -1074,7 +1074,7 @@
             "7h_plus"
           ],
           "type": "revolute",
-          "axis": "x",
+          "axis": [1, 0, 0],
           "initial_displacement": -2.6,
           "initial_velocity": 0
         },
@@ -1093,7 +1093,7 @@
             "origin"
           ],
           "type": "revolute",
-          "axis": "x",
+          "axis": [1, 0, 0],
           "initial_displacement": -0.1,
           "initial_velocity": 0
         }
