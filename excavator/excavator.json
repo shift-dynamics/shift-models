@@ -791,7 +791,7 @@
           "type": "revolute",
           "axis": [1, 0, 0],
           "initial_displacement": 0.1,
-          "initial_velocity": 0
+          "initial_velocity": 0.0
         },
         {
           "name": "E_stick_to_bucket",
@@ -809,8 +809,8 @@
           ],
           "type": "revolute",
           "axis": [1, 0, 0],
-          "initial_displacement": 1,
-          "initial_velocity": 0
+          "initial_displacement": 1.0,
+          "initial_velocity": 0.0
         },
         {
           "name": "F_stick_to_bucket_linkage_2",
@@ -829,7 +829,7 @@
           "type": "revolute",
           "axis": [1, 0, 0],
           "initial_displacement": 0.8,
-          "initial_velocity": 0
+          "initial_velocity": 0.0
         },
         {
           "name": "G_bucket_to_bucket_linkage_1",
@@ -1017,7 +1017,7 @@
             "3h_minus1"
           ],
           "type": "revolute",
-          "aixs": [1, 0, 0],
+          "axis": [1, 0, 0],
           "initial_displacement": 3.8,
           "initial_velocity": 0
         },
