@@ -8,8 +8,8 @@
       "time": "seconds"
     },
     "gravity": [
-      0.0,
-      0.0,
+      0,
+      0,
       9.81
     ],
     "include_directories": [
@@ -42,39 +42,110 @@
     "frames": [
       {
         "name": "overhead_1",
-        "T": [0.0, 0.0, -48.0],
-        "R": [[1.0, 0.0, 0.0],
-              [0.0, -1.0, 0.0],
-              [0.0, 0.0, -1.0]]
+        "T": [
+          0,
+          0,
+          -48
+        ],
+        "R": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            -1,
+            0
+          ],
+          [
+            0,
+            0,
+            -1
+          ]
+        ]
       },
       {
         "name": "overhead_2",
-        "T": [48.0, 48.0, -48.0],
-        "R": [[1.0, 0.0, 0.0],
-              [0.0, -1.0, 0.0],
-              [0.0, 0.0, -1.0]]
+        "T": [
+          48,
+          48,
+          -48
+        ],
+        "R": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            -1,
+            0
+          ],
+          [
+            0,
+            0,
+            -1
+          ]
+        ]
       },
       {
         "name": "overhead_3",
-        "T": [0.0, 48.0, -48.0],
-        "R": [[1.0, 0.0, 0.0],
-              [0.0, -0.70710678119, 0.70710678119],
-              [0.0, -0.70710678119, -0.70710678119]]
+        "T": [
+          0,
+          48,
+          -48
+        ],
+        "R": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            -0.70710678119,
+            0.70710678119
+          ],
+          [
+            0,
+            -0.70710678119,
+            -0.70710678119
+          ]
+        ]
       },
       {
         "name": "attachment",
-        "T": [0, 0, -3]
+        "T": [
+          0,
+          0,
+          -3
+        ]
       },
       {
         "name": "distal",
-        "R": [[0.0, 0.0, -1.0],
-              [0.0, 1.0, 0.0],
-              [1.0, 0.0, 0.0]],
+        "R": [
+          [
+            0,
+            0,
+            -1
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ]
+        ],
         "T": [
           0,
           -1.5,
           -3
-
         ]
       }
     ],
@@ -82,26 +153,71 @@
       {
         "name": "overhead_1",
         "type": "spot",
-        "parent": ["fixed", "overhead_1"],
-        "Ka": [0.2, 0.2, 0.2],
-        "Kd": [0.8, 0.8, 0.8],
-        "Ks": [0.2, 0.2, 0.2]
+        "parent": [
+          "fixed",
+          "overhead_1"
+        ],
+        "Ka": [
+          0.2,
+          0.2,
+          0.2
+        ],
+        "Kd": [
+          0.8,
+          0.8,
+          0.8
+        ],
+        "Ks": [
+          0.2,
+          0.2,
+          0.2
+        ]
       },
       {
         "name": "overhead_2",
         "type": "spot",
-        "parent": ["fixed", "overhead_2"],
-        "Ka": [0.2, 0.2, 0.2],
-        "Kd": [0.6, 0.6, 0.6],
-        "Ks": [0.2, 0.2, 0.2]
+        "parent": [
+          "fixed",
+          "overhead_2"
+        ],
+        "Ka": [
+          0.2,
+          0.2,
+          0.2
+        ],
+        "Kd": [
+          0.6,
+          0.6,
+          0.6
+        ],
+        "Ks": [
+          0.2,
+          0.2,
+          0.2
+        ]
       },
       {
         "name": "overhead_3",
         "type": "directional",
-        "parent": ["fixed", "overhead_3"],
-        "Ka": [0.2, 0.2, 0.2],
-        "Kd": [0.8, 0.8, 0.8],
-        "Ks": [0.2, 0.2, 0.2]
+        "parent": [
+          "fixed",
+          "overhead_3"
+        ],
+        "Ka": [
+          0.2,
+          0.2,
+          0.2
+        ],
+        "Kd": [
+          0.8,
+          0.8,
+          0.8
+        ],
+        "Ks": [
+          0.2,
+          0.2,
+          0.2
+        ]
       }
     ]
   },
@@ -115,22 +231,25 @@
           "geometry": [
             {
               "type": "mesh",
-              "filename": ["link1.obj", "link1.mtl"]
+              "filename": [
+                "link1.obj",
+                "link1.mtl"
+              ]
             }
           ],
           "center_of_mass": [
-            0.0,
+            0,
             -0.75,
-            0.0
+            0
           ],
           "inertia": {
-            "mass": 1.0,
-            "Izx": 0.0,
+            "mass": 1,
+            "Izx": 0,
             "Ixx": 0.1875,
-            "Ixy": 0.0,
+            "Ixy": 0,
             "Izz": 0.01,
             "Iyy": 0.1875,
-            "Iyz": 0.0
+            "Iyz": 0
           }
         },
         {
@@ -138,15 +257,32 @@
           "geometry": [
             {
               "type": "mesh",
-              "filename": ["link1.obj", "link1.mtl"]
+              "filename": [
+                "link1.obj",
+                "link1.mtl"
+              ]
             }
           ],
           "frames": [
             {
               "name": "2_distal",
-              "R": [[0, 0, -1],
-                    [0, 1, 0],
-                    [1, 0, 0]],
+              "R": [
+                [
+                  0,
+                  0,
+                  -1
+                ],
+                [
+                  0,
+                  1,
+                  0
+                ],
+                [
+                  1,
+                  0,
+                  0
+                ]
+              ],
               "T": [
                 0,
                 -1.5,
@@ -155,18 +291,18 @@
             }
           ],
           "center_of_mass": [
-            0.0,
+            0,
             -0.75,
-            0.0
+            0
           ],
           "inertia": {
-            "mass": 1.0,
-            "Izx": 0.0,
+            "mass": 1,
+            "Izx": 0,
             "Ixx": 0.1875,
-            "Ixy": 0.0,
+            "Ixy": 0,
             "Izz": 0.01,
             "Iyy": 0.1875,
-            "Iyz": 0.0
+            "Iyz": 0
           }
         },
         {
@@ -174,15 +310,32 @@
           "geometry": [
             {
               "type": "mesh",
-              "filename": ["link1.obj", "link1.mtl"]
+              "filename": [
+                "link1.obj",
+                "link1.mtl"
+              ]
             }
           ],
           "frames": [
             {
               "name": "3_distal",
-              "R": [[0, 0, -1],
-                    [0, 1, 0],
-                    [1, 0, 0]],
+              "R": [
+                [
+                  0,
+                  0,
+                  -1
+                ],
+                [
+                  0,
+                  1,
+                  0
+                ],
+                [
+                  1,
+                  0,
+                  0
+                ]
+              ],
               "T": [
                 0,
                 -1.5,
@@ -191,18 +344,18 @@
             }
           ],
           "center_of_mass": [
-            0.0,
+            0,
             -0.75,
-            0.0
+            0
           ],
           "inertia": {
-            "mass": 1.0,
-            "Izx": 0.0,
+            "mass": 1,
+            "Izx": 0,
             "Ixx": 0.1875,
-            "Ixy": 0.0,
+            "Ixy": 0,
             "Izz": 0.01,
             "Iyy": 0.1875,
-            "Iyz": 0.0
+            "Iyz": 0
           }
         },
         {
@@ -210,15 +363,32 @@
           "geometry": [
             {
               "type": "mesh",
-              "filename": ["link1.obj", "link1.mtl"]
+              "filename": [
+                "link1.obj",
+                "link1.mtl"
+              ]
             }
           ],
           "frames": [
             {
               "name": "4_distal",
-              "R": [[0, 0, -1],
-                    [0, 1, 0],
-                    [1, 0, 0]],
+              "R": [
+                [
+                  0,
+                  0,
+                  -1
+                ],
+                [
+                  0,
+                  1,
+                  0
+                ],
+                [
+                  1,
+                  0,
+                  0
+                ]
+              ],
               "T": [
                 0,
                 -1.5,
@@ -227,18 +397,18 @@
             }
           ],
           "center_of_mass": [
-            0.0,
+            0,
             -0.75,
-            0.0
+            0
           ],
           "inertia": {
-            "mass": 1.0,
-            "Izx": 0.0,
+            "mass": 1,
+            "Izx": 0,
             "Ixx": 0.1875,
-            "Ixy": 0.0,
+            "Ixy": 0,
             "Izz": 0.01,
             "Iyy": 0.1875,
-            "Iyz": 0.0
+            "Iyz": 0
           }
         },
         {
@@ -246,15 +416,32 @@
           "geometry": [
             {
               "type": "mesh",
-              "filename": ["link1.obj", "link1.mtl"]
+              "filename": [
+                "link1.obj",
+                "link1.mtl"
+              ]
             }
           ],
           "frames": [
             {
               "name": "5_distal",
-              "R": [[0, 0, 1],
-                    [0, 1, 0],
-                    [-1, 0, 0]],
+              "R": [
+                [
+                  0,
+                  0,
+                  1
+                ],
+                [
+                  0,
+                  1,
+                  0
+                ],
+                [
+                  -1,
+                  0,
+                  0
+                ]
+              ],
               "T": [
                 0,
                 -1.5,
@@ -263,18 +450,18 @@
             }
           ],
           "center_of_mass": [
-            0.0,
+            0,
             -0.75,
-            0.0
+            0
           ],
           "inertia": {
-            "mass": 1.0,
-            "Izx": 0.0,
+            "mass": 1,
+            "Izx": 0,
             "Ixx": 0.1875,
-            "Ixy": 0.0,
+            "Ixy": 0,
             "Izz": 0.01,
             "Iyy": 0.1875,
-            "Iyz": 0.0
+            "Iyz": 0
           }
         },
         {
@@ -282,15 +469,32 @@
           "geometry": [
             {
               "type": "mesh",
-              "filename": ["link1.obj", "link1.mtl"]
+              "filename": [
+                "link1.obj",
+                "link1.mtl"
+              ]
             }
           ],
           "frames": [
             {
               "name": "6_distal",
-              "R": [[0, 0, -1],
-                    [0, 1, 0],
-                    [1, 0, 0]],
+              "R": [
+                [
+                  0,
+                  0,
+                  -1
+                ],
+                [
+                  0,
+                  1,
+                  0
+                ],
+                [
+                  1,
+                  0,
+                  0
+                ]
+              ],
               "T": [
                 0,
                 -1.5,
@@ -299,18 +503,18 @@
             }
           ],
           "center_of_mass": [
-            0.0,
+            0,
             -0.75,
-            0.0
+            0
           ],
           "inertia": {
-            "mass": 1.0,
-            "Izx": 0.0,
+            "mass": 1,
+            "Izx": 0,
             "Ixx": 0.1875,
-            "Ixy": 0.0,
+            "Ixy": 0,
             "Izz": 0.01,
             "Iyy": 0.1875,
-            "Iyz": 0.0
+            "Iyz": 0
           }
         }
       ],
@@ -318,91 +522,139 @@
         {
           "name": "A",
           "parent": [
-            ["2"],
+            [
+              "2"
+            ],
             "origin"
           ],
           "child": [
-            ["fixed"],
+            [
+              "fixed"
+            ],
             "distal"
           ],
           "type": "revolute",
-          "axis": [1, 0, 0],
+          "axis": [
+            1,
+            0,
+            0
+          ],
           "initial_displacement": 0.776,
           "initial_velocity": 0.02623322119
         },
         {
           "name": "B",
           "parent": [
-            ["2"],
+            [
+              "2"
+            ],
             "2_distal"
           ],
           "child": [
-            ["3"],
+            [
+              "3"
+            ],
             "origin"
           ],
           "type": "revolute",
-          "axis": [1, 0, 0],
-          "initial_displacement": -2.0,
+          "axis": [
+            1,
+            0,
+            0
+          ],
+          "initial_displacement": -2,
           "initial_velocity": 0.1
         },
         {
           "name": "C",
           "parent": [
-            ["3"],
+            [
+              "3"
+            ],
             "3_distal"
           ],
           "child": [
-            ["4"],
+            [
+              "4"
+            ],
             "origin"
           ],
           "type": "revolute",
-          "axis": [1, 0, 0],
+          "axis": [
+            1,
+            0,
+            0
+          ],
           "initial_displacement": 0.776,
           "initial_velocity": 0.02623322119
         },
         {
           "name": "D",
           "parent": [
-            ["5"],
+            [
+              "5"
+            ],
             "origin"
           ],
           "child": [
-            ["4"],
+            [
+              "4"
+            ],
             "4_distal"
           ],
           "type": "revolute",
-          "axis": [1, 0, 0],
-          "initial_displacement": -2.0,
+          "axis": [
+            1,
+            0,
+            0
+          ],
+          "initial_displacement": -2,
           "initial_velocity": 0.1
         },
         {
           "name": "E",
           "parent": [
-            ["5"],
+            [
+              "5"
+            ],
             "5_distal"
           ],
           "child": [
-            ["6"],
+            [
+              "6"
+            ],
             "origin"
           ],
           "type": "revolute",
-          "axis": [1, 0, 0],
+          "axis": [
+            1,
+            0,
+            0
+          ],
           "initial_displacement": 0.776,
           "initial_velocity": 0.02623322119
         },
         {
           "name": "F",
           "parent": [
-            ["fixed"],
+            [
+              "fixed"
+            ],
             "attachment"
           ],
           "child": [
-            ["6"],
+            [
+              "6"
+            ],
             "6_distal"
           ],
           "type": "revolute",
-          "axis": [1, 0, 0],
-          "initial_displacement": -2.0,
+          "axis": [
+            1,
+            0,
+            0
+          ],
+          "initial_displacement": -2,
           "initial_velocity": 0.1
         }
       ]
