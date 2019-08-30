@@ -38,125 +38,127 @@
       }
     ]
   },
-  "fixed": {
-    "frames": [
-      {
-        "name": "overhead_1",
-        "T": [
-          6,
-          -6,
-          -24
+
+  "frames": [
+    {
+      "name": "overhead_1",
+      "T": [
+        6,
+        -6,
+        -24
+      ],
+      "R": [
+        [
+          1,
+          0,
+          0
         ],
-        "R": [
-          [
-            1,
-            0,
-            0
-          ],
-          [
-            0,
-            -1,
-            0
-          ],
-          [
-            0,
-            0,
-            -1
-          ]
+        [
+          0,
+          -1,
+          0
+        ],
+        [
+          0,
+          0,
+          -1
         ]
-      },
-      {
-        "name": "overhead_2",
-        "T": [
-          -6,
-          -6,
-          -24
+      ]
+    },
+    {
+      "name": "overhead_2",
+      "T": [
+        -6,
+        -6,
+        -24
+      ],
+      "R": [
+        [
+          1,
+          0,
+          0
         ],
-        "R": [
-          [
-            1,
-            0,
-            0
-          ],
-          [
-            0,
-            -1,
-            0
-          ],
-          [
-            0,
-            0,
-            -1
-          ]
+        [
+          0,
+          -1,
+          0
+        ],
+        [
+          0,
+          0,
+          -1
         ]
-      }
-    ],
-    "lights": [
-      {
-        "name": "overhead_1",
-        "type": "point",
-        "parent": [
-          "fixed",
-          "overhead_1"
-        ],
-        "Ka": [
-          0.4,
-          0.4,
-          0.4
-        ],
-        "Kd": [
-          0.6,
-          0.6,
-          0.6
-        ],
-        "Ks": [
-          0.2,
-          0.2,
-          0.2
-        ]
-      },
-      {
-        "name": "overhead_2",
-        "type": "point",
-        "parent": [
-          "fixed",
-          "overhead_2"
-        ],
-        "Ka": [
-          0.6,
-          0.6,
-          0.6
-        ],
-        "Kd": [
-          0.6,
-          0.6,
-          0.6
-        ],
-        "Ks": [
-          0.2,
-          0.2,
-          0.2
-        ]
-      }
-    ],
-    "terrain": [
-      {
-        "type": "basic",
-        "name": "sinxx+cosyy",
-        "definition": "sinxx+cosyy.tiff",
-        "texture": "cracked_sand.jpg",
-        "property_map": null,
-        "parent": [
-          "fixed",
-          "origin"
-        ],
-        "x_scale": 0.2,
-        "y_scale": 0.3,
-        "coordinate_type": "sae",
-        "interpolation_type": "bicubic"
-      }
-    ]
-  },
+      ]
+    }
+  ],
+
+  "lights": [
+    {
+      "name": "overhead_1",
+      "type": "point",
+      "parent": [
+        "fixed",
+        "overhead_1"
+      ],
+      "Ka": [
+        0.4,
+        0.4,
+        0.4
+      ],
+      "Kd": [
+        0.6,
+        0.6,
+        0.6
+      ],
+      "Ks": [
+        0.2,
+        0.2,
+        0.2
+      ]
+    },
+    {
+      "name": "overhead_2",
+      "type": "point",
+      "parent": [
+        "fixed",
+        "overhead_2"
+      ],
+      "Ka": [
+        0.6,
+        0.6,
+        0.6
+      ],
+      "Kd": [
+        0.6,
+        0.6,
+        0.6
+      ],
+      "Ks": [
+        0.2,
+        0.2,
+        0.2
+      ]
+    }
+  ],
+
+  "terrain": [
+    {
+      "type": "basic",
+      "name": "sinxx+cosyy",
+      "definition": "sinxx+cosyy.tiff",
+      "texture": "cracked_sand.jpg",
+      "property_map": null,
+      "parent": [
+        "fixed",
+        "origin"
+      ],
+      "x_scale": 0.2,
+      "y_scale": 0.3,
+      "coordinate_type": "sae",
+      "interpolation_type": "bicubic"
+    }
+  ],
+
   "assemblies": [
     {
       "name": "excavator",
