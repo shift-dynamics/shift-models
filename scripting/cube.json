@@ -9,17 +9,39 @@
     },
     "gravity": [
       0.0,
-      0,
+      0.0,
       9.81
     ],
-    "include_dir": [
+    "include_directories": [
       "."
+    ],
+    "solvers": [
+      {
+        "type": "rnca",
+        "infinity_norm_multiplier": 2.0
+      }
+    ],
+    "integrators": [
+      {
+        "type": "ode113",
+        "time_span": 1.0,
+        "time_step": 0.01,
+        "relative_error": 0.0001,
+        "absolute_error": 0.0001,
+        "omega_n": 200
+      }
+    ],
+    "loggers": [
+      {
+        "type": "csv",
+        "csv_logfile": "cube.csv",
+        "timestamp_logfile": false
+      }
     ]
   },
   "assemblies": [
     {
       "name": "main_assembly",
-      "assemblies": [],
       "bodies": [
         {
           "name": "cube",
@@ -27,14 +49,14 @@
             "cube.obj",
             "cube.mtl"
           ],
-          "mass": 1,
           "center_of_mass": [
             0.0,
             0.0,
             0.0
           ],
           "frames": null,
-          "moment_of_inertia": {
+          "inertia": {
+            "mass": 1.0,
             "Ixx": 1.0,
             "Ixy": 0.0,
             "Izx": 0.0,
@@ -46,20 +68,23 @@
       ],
       "joints": [
         {
-          "name": "joint1",
-          "body_frame_pairs": [
+          "name": "A_fixed_to_cube",
+          "parent": [
             [
-              "fixed",
-              "origin"
+              "fixed"
             ],
-            [
-              "cube",
-              "origin"
-            ]
+            "origin"
           ],
-          "type": "Rx",
+          "child": [
+            [
+              "cube"
+            ],
+            "origin"
+          ],
+          "type": "prismatic",
+          "axis": [0, 0, 1],
           "initial_displacement": 0.0,
-          "initial_velocity": 0
+          "initial_velocity": 0.0
         }
       ],
       "active": true

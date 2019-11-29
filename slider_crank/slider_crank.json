@@ -1,6 +1,6 @@
 {
   "model_parameters": {
-    "version": "0.2",
+    "version": "2.0.0",
     "units": {
       "angle": "radians",
       "length": "meters",
@@ -8,84 +8,99 @@
       "time": "seconds"
     },
     "gravity": [0.0, 0.0, -9.81],
-    "include_dir": [
-      "models/slider_crank/",
-      "examples/"
+    "include_directories": [
+      "models/slider_crank/"
     ],
-    "simulation": {
-      "integration_type": "ode113b",
-      "time_span": 20.0,
-      "time_step": 0.03,
-      "relative_error": 1e-4,
-      "absolute_error": 1e-4,
-      "out_file": "slider_crank.dat",
-      "omega_n": 50.0
-    }
-  },
-  "fixed":{
-    "frames": [
+    "solvers": [
       {
-        "name": "attachment",
-        "T":[0, 0, -3]
-      },
-
-      {
-        "name": "1h_plus",
-        "R":[[0.0, 0.0, -1.0],
-             [0.0, 1.0, 0.0],
-             [1.0,  0.0, 0.0]]
-      },
-      {
-        "name": "overhead_1",
-        "T": [0.0, 0.0, -48.0],
-        "R": [[1.0, 0.0, 0.0],
-              [0.0, -1.0, 0.0],
-              [0.0, 0.0, -1.0]]
-      },
-      {
-        "name": "overhead_2",
-        "T": [48.0, 48.0, -48.0],
-        "R": [[1.0, 0.0, 0.0],
-              [0.0, -1.0, 0.0],
-              [0.0, 0.0, -1.0]]
-      },
-      {
-        "name": "overhead_3",
-        "T": [0.0, 48.0, -48.0],
-        "R": [[1.0, 0.0, 0.0],
-              [0.0, -0.70710678119, 0.70710678119],
-              [0.0, -0.70710678119, -0.70710678119]]
+        "type": "rnca",
+        "infinity_norm_multiplier": 2.0
       }
     ],
-    "lights": [
+    "integrators": [
       {
-        "name": "overhead_1",
-        "type": "point",
-        "parent": ["fixed", "overhead_1"],
-        "Ka": [0.4, 0.4, 0.4],
-        "Kd" : [0.8, 0.8, 0.8],
-        "Ks" : [0.2, 0.2, 0.2]
-      },
+        "type": "ode113",
+        "time_span": 10.0,
+        "time_step": 0.03,
+        "relative_error": 0.0001,
+        "absolute_error": 0.0001,
+        "omega_n": 50.0
+      }
+    ],
+    "loggers": [
       {
-        "name": "overhead_2",
-        "type": "point",
-        "parent": ["fixed", "overhead_2"],
-        "Ka": [0.6, 0.6, 0.6],
-        "Kd" : [0.6, 0.6, 0.6],
-        "Ks" : [0.2, 0.2, 0.2]
+        "type": "csv",
+        "csv_logfile": "slider_crank.csv",
+        "timestamp_logfile": false
       }
     ]
   },
+  "frames": [
+    {
+        "name": "attachment",
+        "T":[0, 0, -3]
+    },
+
+    {
+      "name": "1h_plus",
+      "R":[[0.0, 0.0, -1.0],
+           [0.0, 1.0, 0.0],
+           [1.0, 0.0, 0.0]]
+    },
+    {
+      "name": "overhead_1",
+      "T": [0.0, 0.0, -48.0],
+      "R": [[1.0, 0.0, 0.0],
+            [0.0, -1.0, 0.0],
+            [0.0, 0.0, -1.0]]
+    },
+    {
+      "name": "overhead_2",
+      "T": [48.0, 48.0, -48.0],
+      "R": [[1.0, 0.0, 0.0],
+            [0.0, -1.0, 0.0],
+            [0.0, 0.0, -1.0]]
+    },
+    {
+      "name": "overhead_3",
+      "T": [0.0, 48.0, -48.0],
+      "R": [[1.0, 0.0, 0.0],
+            [0.0, -0.70710678119, 0.70710678119],
+            [0.0, -0.70710678119, -0.70710678119]]
+    }
+  ],
+  "lights": [
+    {
+      "name": "overhead_1",
+      "type": "point",
+      "parent": ["fixed", "overhead_1"],
+      "Ka": [0.4, 0.4, 0.4],
+      "Kd" : [0.8, 0.8, 0.8],
+      "Ks" : [0.2, 0.2, 0.2]
+    },
+    {
+      "name": "overhead_2",
+      "type": "point",
+      "parent": ["fixed", "overhead_2"],
+      "Ka": [0.6, 0.6, 0.6],
+      "Kd" : [0.6, 0.6, 0.6],
+      "Ks" : [0.2, 0.2, 0.2]
+    }
+  ],
   "assemblies": [
     {
       "name": "slider_crank",
-      "active":true,
       "bodies": [
         {
           "name": "crank",
-          "definition": [
-            "crank.obj",
-            "crank.mtl"
+          "geometry": [
+            {
+              "type": "mesh",
+              "filename": [
+                "crank.obj",
+                "crank.mtl"
+              ]
+            }
           ],
           "frames": [
             {
@@ -94,8 +109,8 @@
             }
           ],
           "center_of_mass": [0.0, 0.3, 0.0],
-          "mass": 1.0,
-          "moment_of_inertia": {
+          "inertia": {
+            "mass": 1.0,
             "Ixx": 1.0,
             "Ixy": 0.0,
             "Izx": 0.0,
@@ -106,7 +121,12 @@
         },
         {
           "name": "connecting_rod",
-          "definition": ["connecting_rod.obj", "connecting_rod.mtl"],
+          "geometry": {
+            "type": "mesh",
+            "filename": [
+              "connecting_rod.obj", "connecting_rod.mtl"
+            ]
+          },
           "frames": [
             {
               "name": "2h_plus",
@@ -114,8 +134,8 @@
             }
           ],
           "center_of_mass": [0.0, 0.0, -0.75],
-          "mass": 1.0,
-          "moment_of_inertia": {
+          "inertia": {
+            "mass": 1.0,
             "Ixx": 1.0,
             "Ixy": 0.0,
             "Izx": 0.0,
@@ -126,9 +146,15 @@
         },
         {
           "name": "piston",
-          "definition": [
-            "piston.obj",
-            "piston.mtl"],
+          "geometry": [
+            {
+              "type": "mesh",
+              "filename": [
+                "piston.obj",
+                "piston.mtl"
+              ]
+            }
+          ],
           "frames": [
             {
               "name": "4h_plus",
@@ -140,8 +166,8 @@
             }
           ],
           "center_of_mass": [0.0, 0.0, 0.0],
-          "mass": 1.0,
-          "moment_of_inertia": {
+          "inertia": {
+            "mass": 1.0,
             "Ixx": 1.0,
             "Ixy": 0.0,
             "Izx": 0.0,
@@ -153,43 +179,39 @@
       ],
       "joints": [
         {
-          "name": "A_fixed_crank",
-          "body_frame_pairs":[
-            ["fixed", "attachment"],
-            ["crank", "origin"]
-          ],
-          "type": "Rx",
+          "name": "A_fixed_to_crank",
+          "parent": [["fixed"], "attachment"],
+          "child": [["crank"], "origin"],
+          "type": "revolute",
           "initial_displacement": 5.33109,
-          "initial_velocity": 0.0
+          "initial_velocity": 0.0,
+          "axis": [1, 0, 0]
         },
         {
-          "name": "B_fixed_piston",
-          "body_frame_pairs": [
-            ["fixed", "attachment"],
-            ["piston", "4h_plus"]
-          ],
-          "type": "Ty",
+          "name": "B_fixed_to_piston",
+          "parent": [["fixed"], "attachment"],
+          "child": [["piston"], "4h_plus"],
+          "type": "prismatic",
+          "axis": [0, 1, 0],
           "initial_displacement": 1.76612,
           "initial_velocity": 0.0,
           "damping": [0.0, 1.0]
         },
         {
-          "name": "C_connecting_rod_piston",
-          "body_frame_pairs":[
-            ["connecting_rod", "2h_plus"],
-            ["piston", "origin"]
-          ],
-          "type":"Rx",
+          "name": "C_connecting_rod_to_piston",
+          "parent": [["connecting_rod"], "2h_plus"],
+          "child": [["piston"], "origin"],
+          "type": "revolute",
+          "axis": [1, 0, 0],
           "initial_displacement": 2.80968,
           "initial_velocity": 0.0
         },
         {
-          "name": "D_crank_connecting_rod",
-          "body_frame_pairs": [
-            ["crank", "1h_plus"],
-            ["connecting_rod", "origin"]
-          ],
-          "type": "Rx",
+          "name": "D_crank_to_connecting_rod",
+          "parent": [["crank"], "1h_plus"],
+          "child": [["connecting_rod"], "origin"],
+          "type": "revolute",
+          "axis": [1, 0, 0],
           "initial_displacement": 2.85480,
           "initial_velocity": 0.0
         }

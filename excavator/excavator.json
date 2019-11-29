@@ -1,6 +1,6 @@
 {
   "model_parameters": {
-    "version": "0.2",
+    "version": "2.0.0",
     "units": {
       "angle": "radians",
       "length": "meters",
@@ -15,26 +15,27 @@
     "include_directories": [
       "."
     ],
-    "solver": [
+    "solvers": [
       {
         "type": "rnca",
         "infinity_norm_multiplier": 2
       }
     ],
-    "integrator": [
+    "integrators": [
       {
         "type": "ode113",
-        "time_span": 10,
+        "time_span": 2.0,
         "time_step": 0.03,
         "relative_error": 0.0001,
         "absolute_error": 0.0001,
         "omega_n": 200
       }
     ],
-    "logger": [
+    "loggers": [
       {
         "type": "csv",
-        "filename": "excavator.csv"
+        "csv_logfile": "excavator.csv",
+        "timestamp_logfile": false
       }
     ]
   },
@@ -145,11 +146,10 @@
     {
       "type": "basic",
       "name": "sinxx+cosyy",
-      "definition": "sinxx+cosyy.tiff",
-      "texture": "cracked_sand.jpg",
-      "property_map": null,
+      "filename": "sinxx+cosyy.tiff",
+      "texture_filename": "cracked_sand.jpg",
       "parent": [
-        "fixed",
+        ["fixed"],
         "origin"
       ],
       "x_scale": 0.2,
