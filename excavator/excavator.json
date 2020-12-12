@@ -36,6 +36,11 @@
         "type": "csv",
         "csv_logfile": "excavator.csv",
         "timestamp_logfile": false
+      },
+      {
+        "type": "hdf5",
+        "logfile": "excavator.h5",
+        "timestamp_logfile": true
       }
     ]
   },
