@@ -18,17 +18,19 @@
     "solvers": [
       {
         "type": "rnca",
-        "infinity_norm_multiplier": 2
+        "infinity_norm_multiplier": 2.0
       }
     ],
     "integrators": [
       {
         "type": "ode113",
-        "time_span": 2.0,
+        "time_span": 7.0,
         "time_step": 0.03,
         "relative_error": 0.0001,
         "absolute_error": 0.0001,
-        "omega_n": 200
+        "omega_n": 50.0,
+        // "integral_gain": 1000.0,
+        // "omega_n_max": 1000.0
       }
     ],
     "loggers": [
