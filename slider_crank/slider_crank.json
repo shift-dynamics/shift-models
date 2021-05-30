@@ -7,9 +7,9 @@
       "mass": "kilograms",
       "time": "seconds"
     },
-    "gravity": [0.0, 0.0, -9.81],
+    "gravity": [0.0, 0.0, 9.81],
     "include_directories": [
-      "models/slider_crank/"
+      "."
     ],
     "solvers": [
       {
@@ -20,7 +20,7 @@
     "integrators": [
       {
         "type": "ode113",
-        "time_span": 2.0,
+        "time_span": 20.0,
         "time_step": 0.03,
         "relative_error": 0.0001,
         "absolute_error": 0.0001,
@@ -80,7 +80,7 @@
     {
       "name": "overhead_2",
       "type": "point",
-      "parent": [["fixed"], "overhead_2"],
+      "parent": ["fixed", "overhead_2"],
       "Ka": [0.6, 0.6, 0.6],
       "Kd" : [0.6, 0.6, 0.6],
       "Ks" : [0.2, 0.2, 0.2]
@@ -89,6 +89,7 @@
   "assemblies": [
     {
       "name": "slider_crank",
+      "active": true,
       "bodies": [
         {
           "name": "crank",
@@ -182,7 +183,7 @@
       "joints": [
         {
           "name": "A_fixed_to_crank",
-          "parent": ["fixed", "attachment"],
+          "parent": [["fixed"], "attachment"],
           "child": [["crank"], "origin"],
           "type": "revolute",
           "initial_displacement": 5.33109,
@@ -201,8 +202,8 @@
         },
         {
           "name": "C_connecting_rod_to_piston",
-          "parent": ["connecting_rod", "2h_plus"],
-          "child": ["piston", "origin"],
+          "parent": [["connecting_rod"], "2h_plus"],
+          "child": [["piston"], "origin"],
           "type": "revolute",
           "axis": [1, 0, 0],
           "initial_displacement": 2.80968,
@@ -211,7 +212,7 @@
         {
           "name": "D_crank_to_connecting_rod",
           "parent": [["crank"], "1h_plus"],
-          "child": ["connecting_rod", "origin"],
+          "child": [["connecting_rod"], "origin"],
           "type": "revolute",
           "axis": [1, 0, 0],
           "initial_displacement": 2.85480,
