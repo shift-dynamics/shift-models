@@ -20,11 +20,15 @@
     "integrators": [
       {
         "type": "ode113",
-        "time_span": 30.0,
+        "time_span": 1000.0,
         "time_step": 0.03,
-        "relative_error": 0.0001,
+        "relative_error": 0.0,
         "absolute_error": 0.0001,
-        "omega_n": 50.0
+        "omega_n": 50.0,
+        // "omega_n": 50.0,
+        "integral_gain": 0.0,
+        // "integral_gain": 1000.0,
+        "omega_n_max": 100.0
       }
     ],
     "loggers": [
@@ -91,6 +95,31 @@
       "name": "slider_crank",
       "active": true,
       "bodies": [
+        {
+          "name": "base",
+          "frames": [
+            {
+                "name": "attachment",
+                "T":[0, 0, -3]
+            },
+            {
+              "name": "1h_plus",
+              "R":[[0.0, 0.0, -1.0],
+                   [0.0, 1.0, 0.0],
+                   [1.0, 0.0, 0.0]]
+            }
+          ],
+          "center_of_mass": [0.0, 0.0, 0.0],
+          "inertia": {
+            "mass": 1.0,
+            "Ixx": 1.0,
+            "Ixy": 0.0,
+            "Izx": 0.0,
+            "Iyy": 0.1,
+            "Iyz": 0.0,
+            "Izz": 1.0
+          }
+        },
         {
           "name": "crank",
           "geometry": [
@@ -182,8 +211,17 @@
       ],
       "joints": [
         {
-          "name": "A_fixed_to_crank",
-          "parent": [["fixed"], "attachment"],
+          "name": "fixed_to_base",
+          "parent": [["fixed"], "origin"],
+          "child": [["base"], "origin"],
+          "type": "revolute",
+          "initial_displacement": 0.0,
+          "initial_velocity": 0.1,
+          "axis": [0, 0, 1]
+        },
+        {
+          "name": "A_base_to_crank",
+          "parent": [["base"], "attachment"],
           "child": [["crank"], "origin"],
           "type": "revolute",
           "initial_displacement": 5.33109,
@@ -191,14 +229,14 @@
           "axis": [1, 0, 0]
         },
         {
-          "name": "B_fixed_to_piston",
-          "parent": [["fixed"], "attachment"],
+          "name": "B_base_to_piston",
+          "parent": [["base"], "attachment"],
           "child": [["piston"], "4h_plus"],
           "type": "prismatic",
           "axis": [0, 1, 0],
           "initial_displacement": 1.76612,
-          "initial_velocity": 0.0,
-          "damping_coefficients": [0.0, 0.0]
+          "initial_velocity": 0.0/*,
+          "damping_coefficients": [0.0, 1.0]*/
         },
         {
           "name": "C_connecting_rod_to_piston",
